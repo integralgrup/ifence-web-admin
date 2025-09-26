@@ -59,6 +59,7 @@
                             $address[$office->lang] = $office->address;
                             $phone[$office->lang] = $office->phone;
                             $email[$office->lang] = $office->email;
+                            $map_url[$office->lang] = $office->map_url;
                             $lat[$office->lang] = $office->lat;
                             $long[$office->lang] = $office->long;
                         }
@@ -72,7 +73,7 @@
                                 <input type="hidden" name="office_id" value="{{ $office_id[$language->lang_code] }}">
                                 <input type="hidden" name="lang" value="{{ $language->lang_code }}">
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
-                                    <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                                    <div class="card-body grids-4">
                                         <div class="form-group">
                                             <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
@@ -94,12 +95,16 @@
                                             <input type="email" class="form-control" id="email_{{ $language->lang_code }}" name="email_{{ $language->lang_code }}" value="{{ $email[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
+                                            <label for="map_url_{{ $language->lang_code }}">Harita URL ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="map_url_{{ $language->lang_code }}" name="map_url_{{ $language->lang_code }}" value="{{ $map_url[$language->lang_code] }}" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="lat_{{ $language->lang_code }}">Enlem ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="lat_{{ $language->lang_code }}" name="lat_{{ $language->lang_code }}" value="{{ $lat[$language->lang_code] }}" required>
                                         </div>
-                                        <div class="form-group" style="display:none">
+                                        <div class="form-group">
                                             <label for="long_{{ $language->lang_code }}">Boylam ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" value="-">
+                                            <input type="text" class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" value="{{ $long[$language->lang_code] }}" required>
                                         </div>
                                     </div>
                                 </div>

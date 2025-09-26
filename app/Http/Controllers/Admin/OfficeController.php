@@ -49,30 +49,33 @@ class OfficeController extends Controller
                 }
             }
             foreach($this->languages as $language) {
-                $data = $request->validate([
-                    'title_' . $language->lang_code => 'required|string|max:100',
-                    'description_' . $language->lang_code => 'required|string',
-                    'address_' . $language->lang_code => 'required|string|max:255',
-                    'phone_' . $language->lang_code => 'required|string|max:50',
-                    'email_' . $language->lang_code => 'required|string|email|max:100',
-                    'lat_' . $language->lang_code => 'required|string|max:50',
-                    'long_' . $language->lang_code => 'required|string|max:50',
-                ]);
+                if($language->lang_code == 'en'){
+                    $data = $request->validate([
+                        'title_' . $language->lang_code => 'required|string|max:100',
+                        'description_' . $language->lang_code => 'required|string',
+                        'map_url_' . $language->lang_code => 'nullable|string|max:255',
+                        'lat_' . $language->lang_code => 'required|string|max:50',
+                        'long_' . $language->lang_code => 'nullable|string|max:50',
+                        'phone_' . $language->lang_code => 'required|string|max:50',
+                        'email_' . $language->lang_code => 'required|string|email|max:100',
+                    ]);
+                }
 
                 Office::updateOrCreate(
                     ['office_id' => $office_id, 'lang' => $language->lang_code],
                     [
-                        'title' => $data['title_' . $language->lang_code],
-                        'description' => $data['description_' . $language->lang_code],
-                        'address' => $data['address_' . $language->lang_code],
-                        'phone' => $data['phone_' . $language->lang_code],
-                        'email' => $data['email_' . $language->lang_code],
-                        'lat' => $data['lat_' . $language->lang_code],
-                        'long' => $data['long_' . $language->lang_code],
+                        'title' => $request->input('title_' . $language->lang_code) ?? $data['title_en'],
+                        'description' => $request->input('description_' . $language->lang_code) ?? $data['description_en'],
+                        'address' => $request->input('description_' . $language->lang_code) ?? $data['description_en'],
+                        'map_url' => $request->input('map_url_' . $language->lang_code) ?? $data['map_url_en'],
+                        'lat' => $request->input('lat_' . $language->lang_code) ?? $data['lat_en'],
+                        'long' => $request->input('long_' . $language->lang_code) ?? '-',
+                        'phone' => $request->input('phone_' . $language->lang_code) ?? $data['phone_en'],
+                        'email' => $request->input('email_' . $language->lang_code) ?? $data['email_en'],
                     ]
                 );
             }
-            return redirect()->back()->with('success', 'Ofis başarıyla kaydedildi.');
+            return redirect()->route('admin.office.index')->with('success', 'Ofis başarıyla kaydedildi.');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -81,9 +84,9 @@ class OfficeController extends Controller
     /**
      * Show the form for editing the specified office.
      */
-    public function edit(Office $office)
+    public function edit($office_id)
     {
-        $offices = Office::where('office_id', $office->office_id)->get();
+        $offices = Office::where('office_id', $office_id)->get();
         return view('admin.office.edit', compact('offices'));
     }
 
@@ -109,9 +112,10 @@ class OfficeController extends Controller
     /**
      * Remove the specified office from storage.
      */
-    public function destroy(Office $office)
+    public function destroy($office_id)
     {
-        $office->delete();
+        $office = Office::where('office_id', $office_id)->get();
+        $office->each->delete();
 
         return redirect()->route('admin.office.index')->with('success', 'Office deleted successfully.');
     }

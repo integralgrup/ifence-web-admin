@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('address', 255);
             $table->string('phone', 50);
             $table->string('email', 100);
+            $table->string('map_url', 255);
             $table->string('lat', 50);
             $table->string('long', 50);
             $table->timestamp('created_at')->useCurrent();
