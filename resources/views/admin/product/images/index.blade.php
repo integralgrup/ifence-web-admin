@@ -6,7 +6,6 @@
 <?php 
 // get id parameter from route
 $id = request()->route('id');
-$imageId = request()->route('imageId');
 ?>
 
 <!--begin::App Content Header-->
@@ -48,7 +47,7 @@ $imageId = request()->route('imageId');
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">Ürün Görsel Listesi</h5>
-                            <a href="{{ route('admin.product.images.create', $product->id) }}" class="btn btn-primary">
+                            <a href="{{ route('admin.product.images.create', $id) }}" class="btn btn-primary">
                                 <i class="bi bi-plus"></i> Ekle
                             </a>
                         </div>

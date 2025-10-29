@@ -92,8 +92,8 @@
 
                                         <!-- Brand URL -->
                                         <div class="mb-2">
-                                            <label for="club_url" class="form-label">Kulüp URL <span class="text-danger">*</span></label>
-                                            <input type="text" name="club_url" id="club_url" class="form-control" maxlength="255" required>
+                                            <label for="using_area_url" class="form-label">Kullanım Alanı URL <span class="text-danger">*</span></label>
+                                            <input type="text" name="using_area_url" id="using_area_url" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Career URL -->
@@ -134,8 +134,8 @@
 
                                         <!-- Brand Images Folder -->
                                         <div class="mb-2">
-                                            <label for="club_images_folder" class="form-label">Kulüp Görseller Klasörü <span class="text-danger">*</span></label>
-                                            <input type="text" name="club_images_folder" id="club_images_folder" class="form-control" maxlength="255" required>
+                                            <label for="using_area_images_folder" class="form-label">Kullanım Alanı Görseller Klasörü <span class="text-danger">*</span></label>
+                                            <input type="text" name="using_area_images_folder" id="using_area_images_folder" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Blog Images Folder -->

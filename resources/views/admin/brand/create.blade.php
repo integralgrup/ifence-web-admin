@@ -66,7 +66,7 @@
                                                 <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="url_{{ $language->lang_code }}" class="form-label">Alt Başlık({{ $language->lang_code }})</label>
+                                                <label for="url_{{ $language->lang_code }}" class="form-label">Üst Başlık({{ $language->lang_code }})</label>
                                                 <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" {{ $required }}>
                                             </div>
                                             <div class="mb-3">

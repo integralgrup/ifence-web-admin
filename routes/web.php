@@ -20,11 +20,19 @@ Route::get('/admin', function () {
 
 // admin/menu route to menu controller index function
 Route::get('/admin/menu', 'App\Http\Controllers\Admin\MenuController@index')->name('admin.menu');
-Route ::get('/admin/menu/create', 'App\Http\Controllers\Admin\MenuController@create')->name('admin.menu.create');
+Route ::get('/admin/menu/create/{$type}', 'App\Http\Controllers\Admin\MenuController@create')->name('admin.menu.create');
 Route::post('/admin/menu/store', 'App\Http\Controllers\Admin\MenuController@store')->name('admin.menu.store');
 Route::get('/admin/menu/{id}/edit', 'App\Http\Controllers\Admin\MenuController@edit')->name('admin.menu.edit');
 //Route::put('/admin/menu/{id}', 'App\Http\Controllers\Admin\MenuController@update')->name('admin.menu.update');
 Route::delete('/admin/menu/{id}', 'App\Http\Controllers\Admin\MenuController@destroy')->name('admin.menu.destroy');
+
+// admin/footer menu routes
+Route::get('/admin/footer-menu/{type}', 'App\Http\Controllers\Admin\MenuController@index')->name('admin.menu.footer');
+Route::get('/admin/menu/create/{type}', 'App\Http\Controllers\Admin\MenuController@create')->name('admin.menu.footer.create');
+Route::post('/admin/menu/store/{type}', 'App\Http\Controllers\Admin\MenuController@store')->name('admin.menu.footer.store');
+Route::get('/admin/menu/{id}/edit/{type}', 'App\Http\Controllers\Admin\MenuController@edit')->name('admin.menu.footer.edit');
+//Route::put('/admin/menu/{id}', 'App\Http\Controllers\Admin\MenuController@update')->name('admin.menu.update');
+Route::delete('/admin/menu/{id}/{type}', 'App\Http\Controllers\Admin\MenuController@destroy')->name('admin.menu.footer.destroy');
 
 // admin/language route to language controller index function
 Route::get('/admin/language', 'App\Http\Controllers\Admin\LanguageController@index')->name('admin.language');
@@ -190,6 +198,9 @@ Route::post('/admin/footer-info/store', 'App\Http\Controllers\Admin\FooterInfoCo
 Route::get('/admin/footer-info/{id}/edit', 'App\Http\Controllers\Admin\FooterInfoController@edit')->name('admin.footer_info.edit');
 Route::delete('/admin/footer-info/{id}', 'App\Http\Controllers\Admin\FooterInfoController@destroy')->name('admin.footer_info.destroy');
 
+Route::post('/admin/update-order', 'App\Http\Controllers\Admin\FooterInfoController@updateSortOrder')->name('admin.update_order');
+
+
 // Project Routes
 Route::get('/admin/project', 'App\Http\Controllers\Admin\ProjectController@index')->name('admin.project.index');
 Route::get('/admin/project/create', 'App\Http\Controllers\Admin\ProjectController@create')->name('admin.project.create');
@@ -217,6 +228,20 @@ Route::get('/admin/continent/create', 'App\Http\Controllers\Admin\CountryControl
 Route::post('/admin/continent/store', 'App\Http\Controllers\Admin\CountryController@continentStore')->name('admin.continent.store');
 Route::get('/admin/continent/{id}/edit', 'App\Http\Controllers\Admin\CountryController@continentEdit')->name('admin.continent.edit');
 Route::delete('/admin/continent/{id}', 'App\Http\Controllers\Admin\CountryController@continentDestroy')->name('admin.continent.destroy');
+
+// Using Areas Routes
+Route::get('/admin/using_areas', 'App\Http\Controllers\Admin\UsingAreasController@index')->name('admin.using_areas.index');
+Route::get('/admin/using_areas/create', 'App\Http\Controllers\Admin\UsingAreasController@create')->name('admin.using_areas.create');
+Route::post('/admin/using_areas/store', 'App\Http\Controllers\Admin\UsingAreasController@store')->name('admin.using_areas.store');
+Route::get('/admin/using_areas/{id}/edit', 'App\Http\Controllers\Admin\UsingAreasController@edit')->name('admin.using_areas.edit');
+Route::delete('/admin/using_areas/{id}', 'App\Http\Controllers\Admin\UsingAreasController@destroy')->name('admin.using_areas.destroy');
+
+// Using Areas Gallery routes
+Route::get('/admin/using_areas/{id}/gallery', 'App\Http\Controllers\Admin\UsingAreasController@galleryIndex')->name('admin.using_areas.gallery.index');
+Route::get('/admin/using_areas/{id}/gallery/create', 'App\Http\Controllers\Admin\UsingAreasController@galleryCreate')->name('admin.using_areas.gallery.create');
+Route::post('/admin/using_areas/{id}/gallery/store', 'App\Http\Controllers\Admin\UsingAreasController@galleryStore')->name('admin.using_areas.gallery.store');
+Route::get('/admin/using_areas/{id}/gallery/{imageId}/edit', 'App\Http\Controllers\Admin\UsingAreasController@galleryEdit')->name('admin.using_areas.gallery.edit');
+Route::delete('/admin/using_areas/{id}/gallery/{imageId}', 'App\Http\Controllers\Admin\UsingAreasController@galleryDestroy')->name('admin.using_areas.gallery.destroy');
 
 }); // End of Auth middleware group
 //Project Front End routes

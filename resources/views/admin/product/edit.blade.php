@@ -59,6 +59,7 @@
                             $description[$product->lang] = $product->description;
                             $technical_info[$product->lang] = $product->technical_info;
                             $image[$product->lang] = $product->image;
+                            $category_id[$product->lang] = $product->category_id;
                             $slider_image[$product->lang] = $product->slider_image;
                             $features_image[$product->lang] = $product->features_image;
                             $features_description[$product->lang] = $product->features_description;
@@ -106,11 +107,11 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="category_id" class="form-label">Kategori ({{ $language->lang_code }})</label>
-                                            <select class="form-select" id="category_id" name="category_id" required >
+                                            <label for="category_id_{{ $language->lang_code }}" class="form-label">Kategori ({{ $language->lang_code }})</label>
+                                            <select class="form-select" id="category_id_{{ $language->lang_code }}" name="category_id_{{ $language->lang_code }}" required >
                                                 <option value="">Kategori Seçiniz</option>
                                                 @foreach($categories as $category)
-                                                    <option value="{{ $category->category_id }}" {{ $category->category_id == $product->category_id ? 'selected' : '' }}>{{ $category->title }}</option>
+                                                    <option value="{{ $category->category_id }}" {{ $category->category_id == $category_id[$language->lang_code] ? 'selected' : '' }}>{{ $category->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

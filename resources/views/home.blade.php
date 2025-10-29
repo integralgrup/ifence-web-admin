@@ -9,35 +9,11 @@
         <section class="main-slider-area homepage-carousel-field overflow-hidden">
             <div class="main-slider flex-grow h-dvh overflow-hidden [&_*]:will-change-[transform]">
                 <div class="swiper-wrapper ">
-                    <?php $slides = [
-                        [
-                            'title' => 'Cross the Borders with Our Fences, <span>Establish Your Security with Ifence!</span>',
-                            'description' => 'Our Ifence brand is the brand that generally produces, assembles and exports fence systems, door systems and wrought iron systems.',
-                            'link' => 'projects.php',
-                            'linkTitle' => 'Projects',
-                            'image' => 'main-slider.jpg'
-                        ],
-
-                        [
-                            'title' => 'Cross the Borders with Our Fences, <span>Establish Your Security with Ifence!</span>',
-                            'description' => 'Our Ifence brand is the brand that generally produces, assembles and exports fence systems, door systems and wrought iron systems.',
-                            'link' => 'projects.php',
-                            'linkTitle' => 'Projects',
-                            'image' => 'main-slider-2.jpg'
-                        ],
-
-                        [
-                            'title' => 'Cross the Borders with Our Fences, <span>Establish Your Security with Ifence!</span>',
-                            'description' => 'Our Ifence brand is the brand that generally produces, assembles and exports fence systems, door systems and wrought iron systems.',
-                            'link' => 'projects.php',
-                            'linkTitle' => 'Projects',
-                            'image' => 'main-slider-3.jpg'
-                        ],
-                    ]; foreach ($slides as $key => $item): ?>
-                        <div class="swiper-slide isolate overflow-hidden " data-slide-image="../assets/image/general/<?= $item['image'] ?>">
+                    <?php foreach ($slides as $key => $item): ?>
+                        <div class="swiper-slide isolate overflow-hidden " data-slide-image="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder'], $item->lang) .'/'. $item->image ?>">
                             <div class="item w-full h-full relative ">
                                 <div class="image-wrapper relative w-full h-full " data-swiper-parallax="50%">
-                                    <img src="../assets/image/general/<?= $item['image'] ?>" alt="<?= $item['title'] ?>" width="1920" height="1000" class="w-full h-full object-cover object-center ">
+                                    <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder'], $item->lang) .'/'. $item->image ?>" alt="{{ $item['alt'] }}" width="1920" height="1000" class="w-full h-full object-cover object-center ">
                                     <div class="overlay absolute left-0 top-0 w-full h-full z-2 bg-[linear-gradient(180deg,_#2E475C_0%,_rgba(46,71,92,0.20)_100%)] "></div>
                                 </div>
                                 <div class="content w-full h-full absolute left-0 top-0 z-3 flex items-end pb-[140px] 2xl:pb-[100px] xl:pb-[60px] ">
@@ -55,7 +31,7 @@
                                                     $textColorHover = "group-hover/button:min-md:text-secondary-main";
                                                     
                                                 ?>
-                                                <a href="<?= $link ?>" class="main-button group/button inline-flex items-center sm:justify-between gap-[32px] lg:gap-[24px] xs:gap-[20px] w-fit sm:w-full max-h-[60px] py-[6px] pl-[50px] lg:pl-[25px] xs:pl-[15px] pr-[11px] relative transition-all duration-450 before:absolute before:-skew-x-12 before:rounded-[6px] before:z-3 before:right-0 before:top-0 before:w-0 before:h-full <?= $backgroundHover ?> before:transition-all before:duration-450 hover:before:min-md:w-full hover:before:min-md:right-auto hover:before:min-md:left-0">
+                                                <a href="javascript:;" class="main-button group/button inline-flex items-center sm:justify-between gap-[32px] lg:gap-[24px] xs:gap-[20px] w-fit sm:w-full max-h-[60px] py-[6px] pl-[50px] lg:pl-[25px] xs:pl-[15px] pr-[11px] relative transition-all duration-450 before:absolute before:-skew-x-12 before:rounded-[6px] before:z-3 before:right-0 before:top-0 before:w-0 before:h-full <?= $backgroundHover ?> before:transition-all before:duration-450 hover:before:min-md:w-full hover:before:min-md:right-auto hover:before:min-md:left-0">
                                                     <div class="absolute w-full h-full left-0 top-0 -skew-x-12 rounded-[6px] z-2 <?= $background ?>"></div>
                                                     <span class="text-[18px] md:text-[16px] leading-[24px] relative z-5 transition-all duration-450 whitespace-nowrap <?= $textColorHover ?>  <?= $textColor ?>"><?= $title ?></span>
                                                     <div class="py-[14px] px-[28px] xs:px-[20px] grid place-items-center relative z-5 before:absolute before:left-0 before:top-0 before:w-full before:h-full before:bg-primary-main before:-skew-x-12 before:rounded-[6px] ---- after:absolute after:right-0 after:top-0 after:w-0 after:h-full after:bg-secondary-main after:transition-all after:duration-450 group-hover/button:after:delay-200 after:-skew-x-12 after:rounded-[6px] group-hover/button:after:min-md:w-full group-hover/button:after:min-md:right-auto group-hover/button:after:min-md:left-0">
@@ -94,7 +70,7 @@
                                 <?php foreach ($slides as $index => $image): ?>
                                     <div class="swiper-slide opacity-0 pointer-events-none [&.swiper-slide-active]:translate-y-[-30px] [&.swiper-slide-active]:pointer-events-auto [&.swiper-slide-active]:opacity-100 [&.swiper-slide-next]:opacity-100 [&.swiper-slide-next]:pointer-events-auto [&.swiper-slide-prev]:opacity-0 [&.swiper-slide-prev]:pointer-events-none transition-all duration-450">
                                         <div class="item rounded-[30px] border-[3px] border-solid border-white/50 overflow-hidden isolate relative h-[230px]">
-                                            <img src="../assets/image/general/<?= $image['image'] ?>" alt="<?= $item['title'] ?>" class="w-full h-full object-cover">
+                                            <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','images_folder'], $image->lang) .'/'. $image->image ?>" alt="<?= $image->alt ?>" class="w-full h-full object-cover">
                                             <div class="w-[50px] aspect-square bg-primary-main rounded-full grid place-items-center absolute left-[23px] top-[23px]">
                                                 <span class="text-[16px] leading-[19px] text-white font-bold">0<?= $index + 1 ?></span>
                                             </div>
@@ -115,11 +91,9 @@
                         <div class="w-2/5 md:w-full min-md:pr-[40px]">
                             <div class="flex flex-col gap-[80px] md:gap-[40px]">
                                 <div class="text-editor flex flex-col gap-[40px] reveal">
-                                    <h1><span>There Are No Limits</span> on Fences for You</h1>
-                                    <p><span>Our Ifence brand is the brand that generally produces, assembles and exports fence systems, door systems and wrought iron systems.</span>
-                                        <br><br>
-                                        The main products of the Ifence brand, which offers various solutions in public areas, living spaces, personalized garden decoration.</p>
-                                    <p style="margin-top: 10px">Our Ifence brand is the brand that generally produces, assembles and exports fence systems, door systems and wrought iron systems. Our Ifence brand is the brand that generally produces...</p>
+                                    <h1>{!! $about->title !!}</h1>
+                                    <p>{!! Str::limit($about->title_1, 600, '...') !!}</p>
+                                    <p style="margin-top: 10px">{!! Str::limit($about->description, 600, '...') !!}</p>
                                 </div>
                                 <div class="button min-sm:hidden">
                                     <?php
@@ -140,13 +114,15 @@
                                 </div>
                                 <div class="certificates-slider overflow-hidden min-md:w-[calc(100%+100px)] reveal">
                                     <div class="swiper-wrapper items-center">
-                                        <?php for ($i = 0; $i < 2; $i++): for ($x = 3; $x >= 1; $x--): ?>
+                                        <?php foreach ($about_certificates as $certificate): ?>
                                             <div class="swiper-slide">
                                                 <div class="item transition-all duration-450 grayscale opacity-50 min-lg:hover:opacity-100">
-                                                    <img src="../assets/image/trademark/c-logo-<?= $x ?>.png" alt="Logo" width="131" height="60" class="w-full h-auto">
+                                                    <a href="{{ asset( getFolder( ['uploads_folder', 'images_folder'], $certificate->lang ) . '/' . $certificate->pdf  )}}" target="_blank" class="w-[131px] h-[60px] grid place-items-center">
+                                                        <img src="{{ asset( getFolder( ['uploads_folder', 'images_folder'], $certificate->lang ) . '/' . $certificate->image  )}}" alt="Logo" width="131" height="60" class="w-full h-auto">
+                                                    </a>
                                                 </div>
                                             </div>
-                                        <?php endfor; endfor; ?>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
 
@@ -157,7 +133,7 @@
                                 <div class="flex xsm:flex-col items-end gap-[53px] xl:gap-[25px]">
                                     <div class="image-wrapper w-[439px] xl:w-[380px] sm:w-full h-[295px] sm:h-[195px] relative image-1">
                                         <div class="-skew-x-12 rounded-[20px] w-full h-full overflow-hidden grid place-items-center">
-                                            <img src="../assets/image/general/home-about-us-1.jpg" alt="About Us" width="439" height="295" class="w-full h-full object-cover skew-x-12 scale-115 sm:scale-125"/>
+                                            <img src="{{ asset( getFolder( ['uploads_folder', 'images_folder'], $about->lang ) . '/' . $about->image  )}}" alt="About Us" width="439" height="295" class="w-full h-full object-cover skew-x-12 scale-115 sm:scale-125"/>
                                         </div>
                                         <div class="absolute -skew-x-12 left-[-26px] top-[-26px] w-[180px] h-[195px] -z-[1] bg-[linear-gradient(180deg,_#00AE83_0%,_rgba(0,174,131,0.00)_100%)] rounded-[15px]"></div>
                                     </div>
@@ -203,32 +179,7 @@
             </div>
         </section>
 
-        <?php $usingAreas = [
-                [
-                    'title' => 'Parks and Gardens',
-                    'image' => 'home-product.jpg'
-                ],
-                [
-                    'title' => 'Energy Facilities',
-                    'image' => 'home-about-us-1.jpg'
-                ],
-                [
-                    'title' => 'Road Sides',
-                    'image' => 'home-about-us-2.jpg'
-                ],
-                [
-                    'title' => 'Sports fields',
-                    'image' => 'home-using-area.jpg'
-                ],
-                [
-                    'title' => 'Military Areas',
-                    'image' => 'news-1.jpg'
-                ],
-                [
-                    'title' => 'Machinery Security Fence Systems',
-                    'image' => 'home-about-us-3.jpg'
-                ],
-            ];
+        <?php $usingAreas = $using_areas;
         ?>
         <section class="using-area py-[90px] md:py-[60px] relative overflow-hidden bg-secondary-main">
             <div class="circle w-[861px] h-[455px] absolute top-0 right-[-220px] rounded-b-full opacity-30 bg-[radial-gradient(50%_100%_at_50%_0%,_#00AE83_0%,_rgba(0,174,131,0.00)_100%)] pointer-events-none"></div>
@@ -285,13 +236,13 @@
                         <div class="w-3/5 md:w-full pr-[90px] xl:pr-[60px] lg:pr-[30px] md:pr-0">
                             <div class="using-area-image-slider w-full h-[600px] xl:h-[500px] lg:h-[350px] rounded-[20px] overflow-hidden isolate reveal">
                                 <div class="swiper-wrapper">
-                                    <?php for ($i = 0; $i <= 2; $i++): foreach ($usingAreas as $item): ?>
+                                    <?php foreach ($usingAreas as $item): ?>
                                         <div class="swiper-slide">
                                             <div class="size-full">
-                                                <img src="../assets/image/general/<?= $item['image'] ?>" alt="Using Area" width="900" height="588" class="w-full h-full object-cover transition-all duration-450 delay-200 [&.changed]:translate-y-[10px] [&.changed]:opacity-0" id="using-area-image">
+                                                <img src="<?= asset(getFolder(['uploads_folder', 'using_area_images_folder'], $item['lang'])) . '/'. $item['image'] ?>" alt="Using Area" width="900" height="588" class="w-full h-full object-cover transition-all duration-450 delay-200 [&.changed]:translate-y-[10px] [&.changed]:opacity-0" id="using-area-image">
                                             </div>
                                         </div>
-                                    <?php endforeach; endfor; ?>
+                                    <?php endforeach;  ?>
                                 </div>
                             </div>
                         </div>
@@ -299,16 +250,16 @@
                             <div class="slide-area w-full">
                                 <div class="using-area-slider overflow-hidden pl-[20px] md:pl-0 h-[600px] xl:h-[500px] lg:h-[350px] md:h-auto reveal">
                                     <div class="swiper-wrapper">
-                                        <?php for ($i = 0; $i <= 2; $i++): foreach ($usingAreas as $item): ?>
+                                        <?php foreach ($usingAreas as $item): ?>
                                             <div class="swiper-slide group/slide transition-all duration-450 opacity-0 [&.swiper-slide-active]:min-md:translate-x-[-20px] [&.swiper-slide-active]:!opacity-100 [&.swiper-slide-prev]:opacity-60 [&.swiper-slide-next]:opacity-60 [&.swiper-slide-fully-visible]:opacity-50">
                                                 <div class="item w-full h-full flex items-center xsm:justify-center">
                                                     <a href="using-area-detail.php" class="flex items-center gap-[20px] overflow-hidden w-max pointer-events-none group-[&.swiper-slide-active]/slide:pointer-events-auto">
-                                                        <p class="text-[32px] xl:text-[27px] lg:text-[22px] md:text-[16px] leading-[48px] xl:leading-[35px] text-white"><?= $item['title'] ?></p>
+                                                        <p class="text-[32px] xl:text-[27px] lg:text-[22px] md:text-[16px] leading-[48px] xl:leading-[35px] text-white"><?= $item->title_1 ?></p>
                                                         <i class="icon-arrow-right text-[22px] md:text-[18px] leading-none h-[22px] md:h-[18px] text-primary-main min-md:translate-x-[30px] opacity-0 transition-all duration-450 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:min-md:translate-x-0"></i>
                                                     </a>
                                                 </div>
                                             </div>
-                                        <?php endforeach; endfor; ?>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
@@ -331,60 +282,17 @@
                                 <span class="absolute z-10 left-0 bottom-0 w-full h-[100px] bg-gradient-to-t from-secondary-50 from-15% to-secondary-50/0 pointer-events-none md:hidden"></span>
                                 <div class="product-slider w-full h-[1000px] md:h-auto overflow-hidden reveal">
                                     <div class="swiper-wrapper">
-                                        <?php $products = [
-                                            [
-                                                'category' => 'Ifence Products',
-                                                'title' => 'Razor Single Panel Fence',
-                                                'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                                                'image' => 'product.png',
-                                                'dataImage' => 'home-product.jpg'
-                                            ],
-                                            [
-                                                'category' => 'Ifence Products',
-                                                'title' => 'Razor Single Panel Fence',
-                                                'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                                                'image' => 'product.png',
-                                                'dataImage' => 'home-using-area.jpg'
-                                            ],
-                                            [
-                                                'category' => 'Ifence Products',
-                                                'title' => 'Razor Single Panel Fence',
-                                                'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                                                'image' => 'product.png',
-                                                'dataImage' => 'main-slider.jpg'
-                                            ],
-                                            [
-                                                'category' => 'Ifence Products',
-                                                'title' => 'Razor Single Panel Fence',
-                                                'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                                                'image' => 'product.png',
-                                                'dataImage' => 'main-slider-2.jpg'
-                                            ],
-                                            [
-                                                'category' => 'Ifence Products',
-                                                'title' => 'Razor Single Panel Fence',
-                                                'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                                                'image' => 'product.png',
-                                                'dataImage' => 'main-slider-3.jpg'
-                                            ],
-                                            [
-                                                'category' => 'Ifence Products',
-                                                'title' => 'Razor Single Panel Fence',
-                                                'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                                                'image' => 'product.png',
-                                                'dataImage' => 'home-product.jpg'
-                                            ],
-                                        ]; foreach ($products as $item): ?>
+                                        <?php foreach ($products as $item): ?>
                                             <div class="swiper-slide group/slide opacity-40 transition-all duration-1000 [&.swiper-slide-active]:opacity-100 [&.swiper-slide-active]:min-md:!mb-[100px]">
-                                                <div class="item w-full flex min-md:items-center md:flex-col transition-transform duration-700 min-md:group-[&.swiper-slide-prev]/slide:translate-y-[60px]" data-image="../assets/image/general/<?= $item['dataImage'] ?>">
+                                                <div class="item w-full flex min-md:items-center md:flex-col transition-transform duration-700 min-md:group-[&.swiper-slide-prev]/slide:translate-y-[60px]" data-image="<?= asset(getFolder(['uploads_folder', 'product_images_folder'], $item['lang'])) . '/'. $item['slider_image'] ?>">
                                                     <div class="w-full max-w-[254px] pr-[50px] md:p-0 md:mb-[20px] transition-all duration-700 delay-200 group-[&.swiper-slide-active]/slide:min-md:max-w-[376px] ease-[cubic-bezier(.45,.05,.55,.95)] md:w-full">
                                                         <div class="image-wrapper h-[355px] xs:h-[300px] w-full transition-all duration-700 group-[&.swiper-slide-active]/slide:min-md:h-[518px]">
-                                                            <img src="../assets/image/general/<?= $item['image'] ?>" alt="<?= $item['image'] ?>" width="254" height="355" class="w-full h-full object-contain">
+                                                            <img src="<?= asset(getFolder(['uploads_folder', 'product_images_folder'], $item['lang'])) . '/'. $item['image'] ?>" alt="<?= $item['alt'] ?>" width="254" height="355" class="w-full h-full object-contain">
                                                         </div>
                                                     </div>
                                                     <div class="w-full pl-[50px] md:p-0 transition-all duration-450 delay-200 group-[&.swiper-slide-active]/slide:min-md:w-1/2 ease-[cubic-bezier(.45,.05,.55,.95)] md:w-full">
                                                         <a href="product-detail.php" class="flex flex-col gap-[20px]">
-                                                            <span class="text-[24px] lg:text-[20px] leading-[36px] text-primary-main"><?= $item['category'] ?></span>
+                                                            <span class="text-[24px] lg:text-[20px] leading-[36px] text-primary-main"><?= $item->category->title ?></span>
                                                             <div class="title">
                                                                 <div class="flex items-center gap-[20px] transition-all duration-700 hover:min-md:translate-x-[20px]">
                                                                     <h3 class="text-[32px] xl:text-[28px] leading-[48px] xl:leading-[40px] font-bold text-secondary-main"><?= $item['title'] ?></h3>
@@ -482,48 +390,27 @@
                                         <i class="icon-arrow-right text-[20px] leading-none h-[20px] text-white/50 group-[&.active]/nav:text-white transition-all duration-450"></i>
                                     </div>
                                 </div>
-                                <?php $tabs = [
+                                <?php 
+
+                                foreach($continents as $key => $item) {
+                                    $continents_array[$key]['name'] = $item['title'];
+                                    $continents_array[$key]['id'] = $item['class'];
+                                    foreach ($item['countries'] as $country) {
+                                        $continents_array[$key]['countries'][] = $country;
+                                    }
+                                }
+                                
+                                
+                                $tabs = [
                                     [
                                         'name' => 'All Projects',
                                         'id' => 'all-projects',
                                     ],
 
-                                    [
-                                        'name' => 'Africa',
-                                        'id' => 'africa',
-                                        'countries' => ['3', '8', '10', '170']
-                                    ],
-
-                                    [
-                                        'name' => 'Europe',
-                                        'id' => 'europe',
-                                        'countries' => ['161', '107', '9', '11', '101', '50', '60', '136']
-                                    ],
-
-                                    [
-                                        'name' => 'North America',
-                                        'id' => 'north-america',
-                                        'countries' => ['5', '10', '12', '102']
-                                    ],
-
-                                    [
-                                        'name' => 'South America',
-                                        'id' => 'south-america',
-                                        'countries' => ['6', '11', '13', '103']
-                                    ],
-
-                                    [
-                                        'name' => 'Asia',
-                                        'id' => 'asia',
-                                        'countries' => ['7', '12', '14', '104']
-                                    ],
-
-                                    [
-                                        'name' => 'Australia',
-                                        'id' => 'australia',
-                                        'countries' => ['8', '13', '15', '105']
-                                    ],
-                                ]; foreach ($tabs as $key => $item): ?>
+                                    ] + $continents_array;
+                                ?>
+                                <?php 
+                                foreach ($tabs as $key => $item): ?>
                                     <div class="reveal [&_div]:last:!border-r-0 ">
                                         <div class="tab cursor-pointer py-[10px] bg-transparent grid place-items-center transition-all duration-450 rounded-[8px] [&.active]:bg-primary-main group whitespace-nowrap <?= $key == 0 ? 'active' : '' ?>" id="<?= $item['id'] ?>" data-tab-id="<?= $key ?>">
                                             <div class="py-[17px] px-[50px] group-[&.project-page]/project:px-[35px] group-[&.active]:px-[25px] 2xl:px-[35px] group-[&.project-page]/project:2xl:px-[25px] 2xl:py-[10px] lg:px-[15px] border-0 !border-r border-solid border-r-white/20 group-[&.active]:border-transparent transition-all duration-450 flex items-center gap-[8px]">
@@ -749,16 +636,15 @@
                                         <path d="M568.105 490.207L569.429 491.466L570.142 493.868L569.664 494.636L569.101 496.938L569.639 499.299L568.757 500.292L567.906 502.951L569.38 503.695L560.872 506.065L561.138 508.12L559.014 508.516L557.417 509.67L557.076 510.676L556.073 510.904L553.634 513.299L552.082 515.192L551.135 515.26L550.224 514.922L547.09 514.602L546.586 514.383L546.565 514.141L545.458 513.482L543.641 513.314L541.345 513.978L539.515 512.155L537.623 509.778L537.752 500.62L543.591 500.656L543.352 499.67L543.77 498.602L543.277 497.266L543.596 495.887L543.299 495.006L544.267 495.077L544.427 495.96L545.741 495.891L547.521 496.153L548.458 497.444L550.704 497.841L552.418 496.943L553.047 498.435L555.196 498.833L556.229 500.049L557.38 501.622L559.526 501.646L559.292 498.566L558.522 499.084L556.562 497.976L555.805 497.469L556.152 494.618L556.65 491.267L556.022 490.021L556.821 488.222L557.573 487.885L561.339 487.41L562.443 487.696L563.615 488.413L564.732 488.885L566.514 489.359L568.105 490.207Z" fill="#E6E9EB" stroke="white" stroke-width="0.4"/>
                                         <path d="M563.709 527.998L562.219 527.697L561.274 528.059L559.917 527.548L558.776 527.516L556.989 526.158L554.821 525.698L553.996 523.803L553.989 522.752L552.788 522.432L549.615 519.177L548.733 517.471L548.169 516.946L547.09 514.602L550.224 514.922L551.135 515.26L552.082 515.192L553.634 513.299L556.073 510.904L557.076 510.676L557.417 509.67L559.014 508.516L561.138 508.12L561.319 509.2L563.658 509.142L564.957 509.754L565.562 510.472L566.896 510.683L568.353 511.617L568.359 515.312L567.813 517.347L567.692 519.55L568.143 520.426L567.826 522.172L567.402 522.443L566.663 524.593L563.709 527.998Z" fill="#E6E9EB" stroke="white" stroke-width="0.4"/>
                                     </svg>
-
                                     <div class="tab-contents absolute z-2 left-0 top-0 w-full h-full pointer-events-none md:pointer-events-auto md:static reveal">
                                         <?php foreach ($tabs as $key => $item): ?>
                                             <div class="main-content main-content-desktop absolute left-0 top-0 w-full h-full transition-all duration-450 opacity-0 group [&.active]:static [&.active]:opacity-100 md:hidden <?= $key == 0 ? 'active' : '' ?>" data-content-id="<?= $key ?>">
                                                 <?php if (isset($item['countries'])) { foreach ($item['countries'] as $index => $country): ?>
-                                                    <div class="content absolute w-max left-0 top-0 group pointer-events-none cursor-pointer" data-country-id="<?= $country ?>">
+                                                    <div class="content absolute w-max left-0 top-0 group pointer-events-none cursor-pointer" data-country-id="<?= $country['country_id'] ?>">
                                                         <a href="#popup-projects" data-project-fancybox class="inline-block pointer-events-auto relative">
                                                             <i class="icon-location-pin inline-block text-[17px] lg:text-[14px] text-[#2C2C2C] group-[&.hovered]:text-[#074cba] [-webkit-text-stroke:0.5px_#fff] group-[&.hovered]:drop-shadow-[0px_0px_20px_5px_rgba(0,0,0,0.10)] transition-all duration-450 pointer-events-none"></i>
                                                             <div class="absolute z-10 left-1/2 bottom-full -translate-x-1/2 bg-white shadow-lg rounded-[4px] px-3 py-2 text-[14px] text-secondary-main font-medium whitespace-nowrap leading-normal opacity-0 scale-95 transition-all duration-450 group-[&.hovered]:opacity-100 group-[&.hovered]:scale-100 group-[&.hovered]:-translate-y-2 pointer-events-none">
-                                                                Country Name
+                                                                <?= $country['title'] ?>
                                                             </div>
                                                         </a>
                                                     </div>
@@ -771,7 +657,7 @@
                                                 <?php foreach ($tabs as $key => $item): ?>
                                                     <?php if (isset($item['countries'])) { foreach ($item['countries'] as $index => $country): ?>
                                                         <div class="main-content swiper-slide main-content-mobile hidden w-full absolute left-0 top-0 opacity-0 transition-all duration-450 group [&.active]:static [&.active]:block [&.active]:opacity-100 <?= $key == 0 ? 'active' : '' ?>" data-content-id="<?= $key ?>">
-                                                            <div class="item relative group/item h-[600px] sm:h-[460px] <?= $i == 0 ? 'reveal' : '' ?>">
+                                                            <div class="item relative group/item h-[600px] sm:h-[460px] <?= $key == 0 ? 'reveal' : '' ?>">
                                                                 <div class="image-wrapper w-full h-[500px] sm:h-[320px] relative">
                                                                     <a href="project-detail.php" class="block w-full h-full">
                                                                         <img src="../assets/image/general/project-image.jpg" alt="Project" width="800" height="500" class="w-full h-full object-cover  rounded-[20px]">
@@ -888,38 +774,19 @@
                         <div class="slide-area w-full">
                             <div class="home-news-slider xl:overflow-hidden reveal [&_*]:will-change-[transform]">
                                 <div class="swiper-wrapper">
-                                    <?php $news = [
-                                        [
-                                            'date' => '30.08.2023',
-                                            'title' => 'Our Ifence brand generally produces and assembles fence systems, door systems and',
-                                            'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                                            'image' => 'news-1.jpg'
-                                        ],
-                                        [
-                                            'date' => '30.08.2023',
-                                            'title' => 'Our Ifence brand generally produces and assembles fence systems, door systems and',
-                                            'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                                            'image' => 'news-2.jpg'
-                                        ],
-                                        [
-                                            'date' => '30.08.2023',
-                                            'title' => 'Our Ifence brand generally produces and assembles fence systems, door systems and',
-                                            'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                                            'image' => 'news-3.jpg'
-                                        ],
-                                    ]; foreach ($news as $item): ?>
+                                    <?php foreach ($blog as $item): ?>
                                         <div class="swiper-slide">
                                             <div class="item w-full rounded-[10px] overflow-hidden bg-secondary-main">
                                                 <div class="flex xsm:flex-col">
                                                     <div class="image-wrapper min-w-[500px] md:min-w-[300px] h-auto xsm:h-[300px]">
-                                                        <img src="../assets/image/general/<?= $item['image'] ?>" alt="<?= $item['image'] ?>" width="503" height="547" class="w-full h-full object-cover">
+                                                        <img src="<?= asset(getFolder(['uploads_folder', 'blog_images_folder'], $item['lang'])) . '/'. $item['image'] ?>" alt="<?= $item['alt'] ?>" width="503" height="547" class="w-full h-full object-cover">
                                                     </div>
                                                     <div class="content p-[80px] 2xl:p-[65px] xl:p-[45px] lg:p-[25px] flex flex-col justify-center gap-[20px]">
                                                         <time class="flex items-center gap-[10px]">
                                                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M2.70296 1.07551C2.99136 1.07551 3.22515 0.841716 3.22515 0.553314V0.546875C3.22515 0.244836 3.46988 0 3.77179 0C4.07369 0 4.31842 0.244836 4.31842 0.546875C4.31842 0.838833 4.5551 1.07551 4.84705 1.07551H9.15297C9.44493 1.07551 9.68161 0.838833 9.68161 0.546875C9.68161 0.244836 9.92634 0 10.2282 0C10.5301 0 10.7749 0.244836 10.7749 0.546875V0.553342C10.7749 0.841728 11.0087 1.07551 11.297 1.07551C12.7875 1.07551 14 2.28859 14 3.77964V11.2958C14 12.7869 12.7875 14 11.297 14H2.70293C1.21254 14 0 12.7869 0 11.2958V3.77964C0 2.28859 1.21254 1.07551 2.70296 1.07551ZM11.297 2.16926C11.0087 2.16926 10.7749 2.40305 10.7749 2.69143V3.23567C10.7749 3.53771 10.5301 3.78254 10.2282 3.78254C9.92634 3.78254 9.68161 3.53771 9.68161 3.23567C9.68161 2.64671 9.20416 2.16926 8.6152 2.16926H5.3848C4.79584 2.16926 4.31839 2.64671 4.31839 3.23567C4.31839 3.53771 4.07366 3.78254 3.77176 3.78254C3.46985 3.78254 3.22513 3.53771 3.22513 3.23567V2.69146C3.22513 2.40306 2.99133 2.16926 2.70293 2.16926C1.81536 2.16926 1.09326 2.89168 1.09326 3.77964C1.09326 4.06817 1.32716 4.30207 1.61569 4.30207H12.3843C12.6728 4.30207 12.9067 4.06817 12.9067 3.77964C12.9067 2.89168 12.1846 2.16926 11.297 2.16926ZM2.70296 12.9062H11.297C12.1846 12.9062 12.9067 12.1838 12.9067 11.2958C12.9067 8.03735 10.2585 5.39582 7 5.39582C3.74151 5.39582 1.09326 8.03735 1.09326 11.2958C1.09326 12.1838 1.81536 12.9062 2.70296 12.9062ZM9.14408 7.54688C9.14408 7.84891 9.38881 8.09375 9.69071 8.09375H10.7657C11.0676 8.09375 11.3124 7.84891 11.3124 7.54688C11.3124 7.24484 11.0676 7 10.7657 7H9.69071C9.38883 7 9.14408 7.24484 9.14408 7.54688ZM2.6876 7.54688C2.6876 7.84891 2.93232 8.09375 3.23423 8.09375H4.30926C4.61117 8.09375 4.85589 7.84891 4.85589 7.54688C4.85589 7.24484 4.61117 7 4.30926 7H3.23423C2.93235 7 2.6876 7.24484 2.6876 7.54688ZM5.91895 7.54688C5.91895 7.84891 6.16368 8.09375 6.46559 8.09375H7.54062C7.84252 8.09375 8.08725 7.84891 8.08725 7.54688C8.08725 7.24484 7.84252 7 7.54062 7H6.46559C6.16371 7 5.91895 7.24484 5.91895 7.54688ZM9.14408 10.7734C9.14408 11.0755 9.38881 11.3203 9.69071 11.3203H10.7657C11.0676 11.3203 11.3124 11.0755 11.3124 10.7734C11.3124 10.4714 11.0676 10.2266 10.7657 10.2266H9.69071C9.38883 10.2266 9.14408 10.4714 9.14408 10.7734ZM2.6876 10.7734C2.6876 11.0755 2.93232 11.3203 3.23423 11.3203H4.30926C4.61117 11.3203 4.85589 11.0755 4.85589 10.7734C4.85589 10.4714 4.61117 10.2266 4.30926 10.2266H3.23423C2.93235 10.2266 2.6876 10.4714 2.6876 10.7734ZM5.91895 10.7734C5.91895 11.0755 6.16368 11.3203 6.46559 11.3203H7.54062C7.84252 11.3203 8.08725 11.0755 8.08725 10.7734C8.08725 10.4714 7.84252 10.2266 7.54062 10.2266H6.46559C6.16371 10.2266 5.91895 10.4714 5.91895 10.7734Z" fill="white"/>
                                                             </svg>
-                                                            <span class="text-[16px] leading-[26px] text-white tracking-[-0.16px]"><?= $item['date'] ?></span>
+                                                            <span class="text-[16px] leading-[26px] text-white tracking-[-0.16px]"><?= date("j F Y", strtotime($item['created_at'])) ?></span>
                                                         </time>
                                                         <h4 class="text-[32px] xl:text-[26px] md:text-[20px] leading-[40px] xl:leading-[35px] text-white font-bold mb-[10px] sm:mb-0"><?= $item['title'] ?></h4>
                                                         <p class="text-[18px] lg:text-[16px] leading-[24px] text-white/75 mb-[60px] xl:mb-[35px] sm:mb-0 sm:hidden"><?= $item['description'] ?></p>

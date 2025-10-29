@@ -20,14 +20,14 @@ return new class extends Migration
             $table->string('title', 100);
             $table->string('about_url', 255);
             $table->string('product_url', 255);
-            $table->string('club_url', 255);
+            $table->string('using_area_url', 255);
             $table->string('project_url', 255);
             $table->string('blog_url', 255);
             $table->string('contact_url', 255);
             $table->string('uploads_folder', 255);
             $table->string('images_folder', 255);
             $table->string('product_images_folder', 255);
-            $table->string('club_images_folder', 255);
+            $table->string('using_area_images_folder', 255);
             $table->string('project_images_folder', 255);
             $table->string('blog_images_folder', 255);
             $table->text('ga_code')->nullable();

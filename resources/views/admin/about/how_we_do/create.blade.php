@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Hakkımızda(Nasıl Yaparız) Ekleme')
+@section('title', 'Hakkımızda(Hizmetlerimiz) Ekleme')
 
 @section('content')
 <!--begin::App Content Header-->
@@ -8,11 +8,11 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Hakkımızda(Nasıl Yaparız) Ekleme</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Hakkımızda(Hizmetlerimiz) Ekleme</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Hakkımızda(Nasıl Yaparız) Yönetimi</li>
+                  <li class="breadcrumb-item active" aria-current="page">Hakkımızda(Hizmetlerimiz) Yönetimi</li>
                 </ol>
               </div>
             </div>

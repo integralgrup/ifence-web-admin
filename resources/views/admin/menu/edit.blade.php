@@ -65,14 +65,12 @@
                                             <label for="page_type_{{$menu->lang}}" class="form-label">Sayfa Türü ({{ $menu->lang }})</label>
                                             <select name="page_type_{{$menu->lang}}" id="page_type_{{$menu->lang}}" class="form-select">
                                                 <option value="">Seçiniz</option>
-                                                <option value="about" {{ $menu->page_type == 'about' ? 'selected' : '' }}>Kurumsal</option>
-                                                <option value="contact" {{ $menu->page_type == 'contact' ? 'selected' : '' }}>İletişim</option>
-                                                <option value="product" {{ $menu->page_type == 'product' ? 'selected' : '' }}>Ürün</option>
-                                                <option value="product_category" {{ $menu->page_type == 'product_category' ? 'selected' : '' }}>Ürün Kategorisi</option>
-                                                <option value="brand" {{ $menu->page_type == 'brand' ? 'selected' : '' }}>Markalar</option>
-                                                <option value="blog" {{ $menu->page_type == 'blog' ? 'selected' : '' }}>Blog</option>
-                                                <option value="club" {{ $menu->page_type == 'club' ? 'selected' : '' }}>Kulüp</option>
+                                                <option value="about" {{ $menu->page_type == 'about' ? 'selected' : '' }}>Hakkımızda</option>
+                                                <option value="product" {{ $menu->page_type == 'product' ? 'selected' : '' }}>Ürünler</option>
+                                                <option value="using_area" {{ $menu->page_type == 'using_area' ? 'selected' : '' }}>Kullanım Alanları</option>
                                                 <option value="project" {{ $menu->page_type == 'project' ? 'selected' : '' }}>Proje</option>
+                                                <option value="contact" {{ $menu->page_type == 'contact' ? 'selected' : '' }}>İletişim</option>
+                                                <option value="blog" {{ $menu->page_type == 'blog' ? 'selected' : '' }}>Blog</option>
                                                 <option value="contact" {{ $menu->page_type == 'contact' ? 'selected' : '' }}>İletişim</option>
                                                 <option value="page" {{ $menu->page_type == 'page' ? 'selected' : '' }}>Özel Sayfa</option>
                                             </select>
@@ -84,6 +82,11 @@
                                                 <option value="0">Seçiniz</option>
                                                 @foreach($parentMenus as $parentMenu)
                                                     <option value="{{ $parentMenu->menu_id }}" {{ $parentMenu->menu_id == $menu->parent_menu_id ? 'selected' : '' }}>{{ $parentMenu->title }}</option>
+                                                    @if($parentMenu->children)
+                                                        @foreach($parentMenu->children as $childMenu)
+                                                            <option value="{{ $childMenu->menu_id }}" {{ $childMenu->menu_id == $menu->parent_menu_id ? 'selected' : '' }}>-- {{ $childMenu->title }}</option>
+                                                        @endforeach
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -93,6 +96,7 @@
                                             <input type="text" class="form-control" id="title_{{$menu->lang}}" name="title_{{$menu->lang}}" value="{{ $menu->title }}" required>
                                         </div>
                                         <!-- Image -->
+                                        @if($menu->menu_type == 'header')
                                         <div class="mb-3">
                                             <label for="image_{{$menu->lang}}" class="form-label">Resim ({{ $menu->lang }})</label>
                                             <input type="file" class="form-control" id="image_{{$menu->lang}}" name="image_{{$menu->lang}}" accept="image/*">
@@ -101,16 +105,17 @@
                                                 <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $menu->lang) .'/'.$menu->image }}" alt="Menu Image" class="img-thumbnail mt-2" style="max-width: 200px;">
                                             @endif
                                         </div>
-                                        <!-- SEO URL -->
-                                        <div class="mb-3">
-                                            <label for="seo_url_{{$menu->lang}}" class="form-label">SEO URL ({{ $menu->lang }})<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="seo_url_{{$menu->lang}}" name="seo_url_{{$menu->lang}}" value="{{ $menu->seo_url }}" required>
-                                        </div>
-                                        
                                         <!-- Alt Text -->
                                         <div class="mb-3">
                                             <label for="alt_{{$menu->lang}}" class="form-label">Alt Text ({{ $menu->lang }})<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="alt_{{$menu->lang}}" name="alt_{{$menu->lang}}" value="{{ $menu->{'alt'} }}" required>
+                                        </div>
+                                        @endif
+                                        
+                                        <!-- SEO URL -->
+                                        <div class="mb-3">
+                                            <label for="seo_url_{{$menu->lang}}" class="form-label">SEO URL ({{ $menu->lang }})<span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="seo_url_{{$menu->lang}}" name="seo_url_{{$menu->lang}}" value="{{ $menu->seo_url }}" required>
                                         </div>
                                         <!-- Menu Type -->
                                         <div class="mb-3">
@@ -118,7 +123,6 @@
                                             <select class="form-select" id="menu_type_{{$menu->lang}}" name="menu_type_{{$menu->lang}}" required>
                                                 <option value="header" {{ $menu->{'menu_type'} == 'header' ? 'selected' : '' }}>Header</option>
                                                 <option value="footer" {{ $menu->{'menu_type'} == 'footer' ? 'selected' : '' }}>Footer</option>
-                                                <option value="sidebar" {{ $menu->{'menu_type'} == 'sidebar' ? 'selected' : '' }}>Sidebar</option>
                                             </select>
                                         </div>
                                         <!-- Sort Order -->

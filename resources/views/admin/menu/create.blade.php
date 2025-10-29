@@ -9,7 +9,7 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Menü Ekleme</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">{{$type == 'footer' ? 'Footer ' : ''}}Menü Ekleme</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
@@ -72,14 +72,12 @@
                                             <label for="page_type_{{$language->lang_code}}" class="form-label">Sayfa Türü ({{ $language->lang_code }})</label>
                                             <select name="page_type_{{$language->lang_code}}" id="page_type_{{$language->lang_code}}" class="form-select" >
                                                 <option value="">Seçiniz</option>
-                                                <option value="about">Kurumsal</option>
-                                                <option value="contact">İletişim</option>
-                                                <option value="product">Ürün</option>
-                                                <option value="product_category">Ürün Kategorisi</option>
-                                                <option value="brand">Markalar</option>
-                                                <option value="blog">Blog</option>
-                                                <option value="club">Kulüp</option>
+                                                <option value="about">Hakkımızda</option>
+                                                <option value="product">Ürünler</option>
+                                                <option value="using_area">Kullanım Alanları</option>
                                                 <option value="project">Proje</option>
+                                                <option value="contact">İletişim</option>
+                                                <option value="blog">Blog</option>
                                                 <option value="contact">İletişim</option>
                                                 <option value="page">Özel Sayfa</option>
                                             </select>
@@ -91,6 +89,11 @@
                                                 <option value="0">Seçiniz</option>
                                                 @foreach($parentMenus as $parentMenu)
                                                     <option value="{{ $parentMenu->menu_id }}">{{ $parentMenu->title }}</option>
+                                                    @if($parentMenu->children)
+                                                        @foreach($parentMenu->children as $childMenu)
+                                                            <option value="{{ $childMenu->menu_id }}">-- {{ $childMenu->title }}</option>
+                                                        @endforeach
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -99,36 +102,34 @@
                                             <label for="title_{{$language->lang_code}}" class="form-label">Başlık ({{ $language->lang_code }})<span class="text-danger">*</span></label>
                                             <input type="text" name="title_{{$language->lang_code}}" id="title_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
                                         </div>
-
-                                        <!-- Image -->
-                                        <div class="mb-3">
-                                            <label for="image_{{$language->lang_code}}" class="form-label">Resim ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="file" name="image_{{$language->lang_code}}" id="image_{{$language->lang_code}}" class="form-control" accept="image/*" {{ $required }}>
-                                        </div>
-
+                                        @if($type == 'header')
+                                            <!-- Image -->
+                                            <div class="mb-3">
+                                                <label for="image_{{$language->lang_code}}" class="form-label">Resim ({{ $language->lang_code }})<span class="text-danger">*</span></label>
+                                                <input type="file" name="image_{{$language->lang_code}}" id="image_{{$language->lang_code}}" class="form-control" accept="image/*" {{ $required }}>
+                                            </div>
+                                            
+                                            <!-- Alt Text -->
+                                            <div class="mb-3">
+                                                <label for="alt_{{$language->lang_code}}" class="form-label">Alt Text ({{ $language->lang_code }})<span class="text-danger">*</span></label>
+                                                <input type="text" name="alt_{{$language->lang_code}}" id="alt_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
+                                            </div>
+                                        
+                                        @endif
                                         <!-- SEO URL -->
                                         <div class="mb-3">
                                             <label for="seo_url_{{$language->lang_code}}" class="form-label">Seo URL ({{ $language->lang_code }})<span class="text-danger">*</span></label>
                                             <input type="text" name="seo_url_{{$language->lang_code}}" id="seo_url_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
                                         </div>
-
-                                        
-
-                                        <!-- Alt Text -->
-                                        <div class="mb-3">
-                                            <label for="alt_{{$language->lang_code}}" class="form-label">Alt Text ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="text" name="alt_{{$language->lang_code}}" id="alt_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
-                                        </div>
-
                                         <!-- Menu Type -->
                                         <div class="mb-3">
                                             <label for="menu_type_{{$language->lang_code}}" class="form-label">Menu Tipi ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <select name="menu_type_{{$language->lang_code}}" id="menu_type_{{$language->lang_code}}" class="form-select" {{ $required }}>
-                                                <option value="">-- Seçiniz --</option>
-                                                <option value="header">Header</option>
-                                                <option value="footer">Footer</option>
-                                                <option value="sidebar">Sidebar</option>
-                                            </select>
+                                            <!-- set selectbox as readonly and default value is $type from controller -->
+                                            <select name="menu_type_{{$language->lang_code}}" id="menu_type_{{$language->lang_code}}" class="form-select" readonly {{ $required }}>
+                                                <option value="{{ $type }}" selected>{{ ucfirst($type) }}</option>
+                                            </select>   
+
+                                            
                                         </div>
 
                                         <!-- Submit Button -->

@@ -40,6 +40,7 @@ class ProductController extends Controller
     // Store new product in database
     public function store(Request $request)
     {
+        //dd($request->all());
         if ($request->has('product_id')) {
                 $product_id = $request->product_id; // Use the provided product_id
             }else{
@@ -54,7 +55,7 @@ class ProductController extends Controller
                     
                     $request->validate([
                         'lang_'.$language->lang_code => 'required|string|max:10',
-                        'category_id' => 'required|integer',
+                        //'category_id' => 'required|integer',
                         'title_'.$language->lang_code => 'required|string|max:100',
                         'seo_url_'.$language->lang_code => 'required|string|max:255',
                         'description_'.$language->lang_code => 'required|string',
@@ -105,7 +106,7 @@ class ProductController extends Controller
 
                 $data = [
                     'product_id' => $product_id,
-                    'category_id' => $request->input('category_id'),
+                    'category_id' => $request->input('category_id_'.$language->lang_code) ?? $request->input('category_id_en'),
                     'lang' => $language->lang_code,
                     'title' => $request->input('title_'.$language->lang_code) ?? $request->input('title_en'),
                     'seo_url' => $request->input('seo_url_'.$language->lang_code) ?? $request->input('seo_url_en'),
@@ -176,9 +177,9 @@ class ProductController extends Controller
     // Display a list of images for a specific product
     public function imagesIndex($id)
     {
-        $product = Product::where('product_id', $id)->where('lang', app()->getLocale())->firstOrFail();
-        $images = $product->images; // Using the relationship defined in the Product model
-        return view('admin.product.images.index', compact('product', 'images'));
+        $images = ProductImage::where('product_id', $id)->where('lang', app()->getLocale())->get();
+        //dd($images);
+        return view('admin.product.images.index', compact('images'));
     }
 
     // Show form to add a new image to a specific product
@@ -278,7 +279,7 @@ class ProductController extends Controller
     public function galleryIndex($id)
     {
         $product = Product::where('product_id', $id)->where('lang', app()->getLocale())->firstOrFail();
-        $gallery = ProductGallery::where('product_id', $id)->get();
+        $gallery = ProductGallery::where('product_id', $id)->where('lang', app()->getLocale())->orderBy('sort')->get();
         return view('admin.product.gallery.index', compact('product', 'gallery'));
     }
 
@@ -625,7 +626,7 @@ class ProductController extends Controller
     // Product Feature methods will go here
     public function featuresIndex($product_id)
     {
-        $features = ProductFeature::where('product_id', $product_id)->get();
+        $features = ProductFeature::where(['product_id' => $product_id, 'lang' => app()->getLocale()])->get();
         return view('admin.product.feature.index', compact('features', 'product_id'));
     }
 

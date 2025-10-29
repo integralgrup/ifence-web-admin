@@ -41,147 +41,62 @@
         <div class="container max-w-[1640px] flex-grow">
             <div class="flex items-center gap-[60px] lg:gap-[30px] md:gap-0 h-full">
                 <div class="left w-full md:w-max flex items-center justify-between gap-[140px] 2xl:gap-[70px] xl:gap-[50px] lg:gap-[30px] h-full">
-                    <?php $menu = [
-                        [ 'title' => 'About Us', 'link' => 'about-us.php', ],
-                        ['title' => 'Product', 'link' => 'products.php',
-                            'megaMenuProduct' => [
-                                'tabs' => [
-                                    ['title' => 'Panel Fence',
-                                        'subMenu' => [
-                                            'Double Panel Fence',
-                                            'Single Panel Fence'
-                                        ],
-                                        'items' => [
-                                            ['image' => 'product-1.jpg', 'title' => 'High Security Fence'],
-                                            ['image' => 'product-2.jpg', 'title' => 'Single Panel Fence'],
-                                            ['image' => 'product-3.jpg', 'title' => 'Double Panel Fence'],
-                                            ['image' => 'product-4.jpg', 'title' => 'Decorative Single Panel Fence'],
-                                            ['image' => 'product-5.jpg', 'title' => 'Decorative Double Panel Fence'],
-                                            ['image' => 'product-6.jpg', 'title' => 'Arc Single Panel Fence'],
-                                            ['image' => 'product-7.jpg', 'title' => 'Razor Panel Fence'],
-                                            ['image' => 'product-8.jpg', 'title' => 'Panel Çit'],
-                                        ]],
-                                    ['title' => 'Roll Fence',
-                                        'subMenu' => [
-                                            'Double Panel Fence',
-                                            'Single Panel Fence'
-                                        ],
-                                        'items' => [
-                                            ['image' => 'product-1.jpg', 'title' => 'High Security Fence'],
-                                            ['image' => 'product-2.jpg', 'title' => 'Single Panel Fence'],
-                                            ['image' => 'product-3.jpg', 'title' => 'Double Panel Fence'],
-                                            ['image' => 'product-4.jpg', 'title' => 'Decorative Single Panel Fence'],
-                                            ['image' => 'product-5.jpg', 'title' => 'Decorative Double Panel Fence'],
-                                            ['image' => 'product-6.jpg', 'title' => 'Arc Single Panel Fence'],
-                                            ['image' => 'product-7.jpg', 'title' => 'Razor Panel Fence'],
-                                            ['image' => 'product-8.jpg', 'title' => 'Panel Çit'],
-                                        ]],
-                                    ['title' => 'Masts',
-                                        'items' => [
-                                            ['image' => 'product-1.jpg', 'title' => 'High Security Fence'],
-                                            ['image' => 'product-2.jpg', 'title' => 'Single Panel Fence'],
-                                            ['image' => 'product-3.jpg', 'title' => 'Double Panel Fence'],
-                                            ['image' => 'product-4.jpg', 'title' => 'Decorative Single Panel Fence'],
-                                            ['image' => 'product-5.jpg', 'title' => 'Decorative Double Panel Fence'],
-                                            ['image' => 'product-6.jpg', 'title' => 'Arc Single Panel Fence'],
-                                            ['image' => 'product-7.jpg', 'title' => 'Razor Panel Fence'],
-                                            ['image' => 'product-8.jpg', 'title' => 'Panel Çit'],
-                                        ]],
-                                    ['title' => 'Door Systems',
-                                        'items' => [
-                                            ['image' => 'product-1.jpg', 'title' => 'High Security Fence'],
-                                            ['image' => 'product-2.jpg', 'title' => 'Single Panel Fence'],
-                                            ['image' => 'product-3.jpg', 'title' => 'Double Panel Fence'],
-                                            ['image' => 'product-4.jpg', 'title' => 'Decorative Single Panel Fence'],
-                                            ['image' => 'product-5.jpg', 'title' => 'Decorative Double Panel Fence'],
-                                            ['image' => 'product-6.jpg', 'title' => 'Arc Single Panel Fence'],
-                                            ['image' => 'product-7.jpg', 'title' => 'Razor Panel Fence'],
-                                            ['image' => 'product-8.jpg', 'title' => 'Panel Çit'],
-                                        ]],
-                                    ['title' => 'Razor / Barbed Wire',
-                                        'items' => [
-                                            ['image' => 'product-1.jpg', 'title' => 'High Security Fence'],
-                                            ['image' => 'product-2.jpg', 'title' => 'Single Panel Fence'],
-                                            ['image' => 'product-3.jpg', 'title' => 'Double Panel Fence'],
-                                            ['image' => 'product-4.jpg', 'title' => 'Decorative Single Panel Fence'],
-                                            ['image' => 'product-5.jpg', 'title' => 'Decorative Double Panel Fence'],
-                                            ['image' => 'product-6.jpg', 'title' => 'Arc Single Panel Fence'],
-                                            ['image' => 'product-7.jpg', 'title' => 'Razor Panel Fence'],
-                                            ['image' => 'product-8.jpg', 'title' => 'Panel Çit'],
-                                        ]],
-                                    ['title' => 'Mobile',
-                                        'items' => [
-                                            ['image' => 'product-1.jpg', 'title' => 'High Security Fence'],
-                                            ['image' => 'product-2.jpg', 'title' => 'Single Panel Fence'],
-                                            ['image' => 'product-3.jpg', 'title' => 'Double Panel Fence'],
-                                            ['image' => 'product-4.jpg', 'title' => 'Decorative Single Panel Fence'],
-                                            ['image' => 'product-5.jpg', 'title' => 'Decorative Double Panel Fence'],
-                                            ['image' => 'product-6.jpg', 'title' => 'Arc Single Panel Fence'],
-                                            ['image' => 'product-7.jpg', 'title' => 'Razor Panel Fence'],
-                                            ['image' => 'product-8.jpg', 'title' => 'Panel Çit'],
-                                        ]],
-                                    ['title' => 'Railing Systems',
-                                        'items' => [
-                                            ['image' => 'product-1.jpg', 'title' => 'High Security Fence'],
-                                            ['image' => 'product-2.jpg', 'title' => 'Single Panel Fence'],
-                                            ['image' => 'product-3.jpg', 'title' => 'Double Panel Fence'],
-                                            ['image' => 'product-4.jpg', 'title' => 'Decorative Single Panel Fence'],
-                                            ['image' => 'product-5.jpg', 'title' => 'Decorative Double Panel Fence'],
-                                            ['image' => 'product-6.jpg', 'title' => 'Arc Single Panel Fence'],
-                                            ['image' => 'product-7.jpg', 'title' => 'Razor Panel Fence'],
-                                            ['image' => 'product-8.jpg', 'title' => 'Panel Çit'],
-                                        ]],
-                                    ['title' => 'Gabion Systems',
-                                        'items' => [
-                                            ['image' => 'product-1.jpg', 'title' => 'High Security Fence'],
-                                            ['image' => 'product-2.jpg', 'title' => 'Single Panel Fence'],
-                                            ['image' => 'product-3.jpg', 'title' => 'Double Panel Fence'],
-                                            ['image' => 'product-4.jpg', 'title' => 'Decorative Single Panel Fence'],
-                                            ['image' => 'product-5.jpg', 'title' => 'Decorative Double Panel Fence'],
-                                            ['image' => 'product-6.jpg', 'title' => 'Arc Single Panel Fence'],
-                                            ['image' => 'product-7.jpg', 'title' => 'Razor Panel Fence'],
-                                            ['image' => 'product-8.jpg', 'title' => 'Panel Çit'],
-                                        ]],
-                                    ['title' => 'Sound Barriers',
-                                        'items' => [
-                                            ['image' => 'product-1.jpg', 'title' => 'High Security Fence'],
-                                            ['image' => 'product-2.jpg', 'title' => 'Single Panel Fence'],
-                                            ['image' => 'product-3.jpg', 'title' => 'Double Panel Fence'],
-                                            ['image' => 'product-4.jpg', 'title' => 'Decorative Single Panel Fence'],
-                                            ['image' => 'product-5.jpg', 'title' => 'Decorative Double Panel Fence'],
-                                            ['image' => 'product-6.jpg', 'title' => 'Arc Single Panel Fence'],
-                                            ['image' => 'product-7.jpg', 'title' => 'Razor Panel Fence'],
-                                            ['image' => 'product-8.jpg', 'title' => 'Panel Çit'],
-                                        ]],
-                                ]
-                            ]
-                        ],
-                        [
-                            'title' => 'Using Areas',
-                            'link' => 'using-areas.php',
-                            'megaMenuUsingArea' => [
-                                [
-                                    'title' => 'Parks and Gardens',
-                                    'image' => 'using-area-4.jpg',
-                                ],
-                                [
-                                    'title' => 'Energy Facilities',
-                                    'image' => 'using-area-3.jpg',
-                                ],
-                                [
-                                    'title' => 'Road Sides',
-                                    'image' => 'using-area-2.jpg',
-                                ],
-                                [
-                                    'title' => 'Sports Fields',
-                                    'image' => 'using-area-1.jpg',
-                                ]
-                            ]
-                        ],
-                        ['title' => 'Projects', 'link' => 'projects.php',],
-                        ['title' => 'News', 'link' => 'news.php',],
-                        ['title' => 'Contact', 'link' => 'contact.php',],
-                    ]; ?>
+                    <?php $menuItems = \App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0])->with('children')->orderBy('sort')->get(); ?>
+
+                    <?php $menu = []; ?>
+
+                    <?php foreach($menuItems as $item) {
+                        $menuItem = [
+                            'title' => $item->title,
+                            'link' => env('HTTP_DOMAIN').'/'.$item->seo_url,
+                        ];
+                        if ($item->children->isNotEmpty()) {
+
+                            $subMenu = [];
+                            if($item->page_type == 'product') {
+                                $menuItem['megaMenuProduct'] = ['tabs' => []];
+
+                                foreach($item->children as $child) {
+                                    $subMenu = [
+                                        'title' => $child->title,
+                                        'items' => []
+                                    ];
+                                    foreach($child->children as $subChild) {
+                                        $subMenu['items'][] = [
+                                            'image' => $subChild->image,
+                                            'title' => $subChild->title,
+                                            'link' => $subChild->seo_url
+                                        ];
+                                    }
+                                    $menuItem['megaMenuProduct']['tabs'][] = $subMenu;
+                                }
+
+                            } elseif($item->page_type == 'using_area') {
+                                $menuItem['megaMenuUsingArea'] = [];
+                                foreach($item->children as $child) {
+                                    $menuItem['megaMenuUsingArea'][] = [
+                                        'title' => $child->title,
+                                        'image' => $child->image,
+                                        'link' => $child->seo_url
+                                    ];
+                                }
+                                $menuItem['megaMenuUsingArea'] = $menuItem['megaMenuUsingArea'] ?? [];
+                            }else {
+                                $subMenu = [];
+                                foreach($item->children as $child) {
+                                    $subMenu[] = $child->title;
+                                }
+                            }
+                            
+                            
+                        }
+                        $menu[] = $menuItem;
+                    } 
+                    
+                    //dd($menu);?>  
+
+
+                    
                     <div class="left-nav min-md:h-full md:overflow-y-scroll overflow-x-hidden md:absolute md:left-0 md:top-[120px] xsm:top-[80px] md:w-full md:bg-white md:opacity-0 md:transition-all md:duration-450 [&.active]:md:max-h-[calc(100dvh-120px)] [&.active]:xsm:max-h-[calc(100dvh-80px)] [&.active]:md:opacity-100 md:pointer-events-none [&.active]:md:pointer-events-auto" id="header-nav">
                         <nav class="min-md:h-full md:px-[30px] md:pb-[15px] md:overflow-hidden">
                             <ul class="flex min-md:items-center md:flex-col flex-grow h-full md:[&_li]:px-0 md:[&_li]:py-[10px] md:[&_li_a]:text-secondary-main md:[&_li_a]:text-[18px]">
@@ -223,9 +138,9 @@
                                                                         <div class="content group/content absolute left-0 top-0 transition-all duration-700 opacity-0 -z-2 [&.active]:opacity-100 [&.active]:relative [&.active]:min-md:delay-500 [&.active]:z-2 <?= $index ?> <?= $index == 0 ? 'active' : '' ?>" data-content-id="<?= $index ?>">
                                                                             <div class="grid grid-cols-4 gap-[35px_40px]">
                                                                                 <?php foreach ($tab['items'] as $number => $content): ?>
-                                                                                    <a href="product-detail.php" class="item group/item flex flex-col items-center gap-[22px] relative overflow-hidden whitespace-normal">
+                                                                                    <a href="{{ env('HTTP_DOMAIN').'/'. getUrl('product_url').'/'.$content['link'] }}" class="item group/item flex flex-col items-center gap-[22px] relative overflow-hidden whitespace-normal">
                                                                                         <div class="image-wrapper h-[160px] rounded-[20px] overflow-hidden isolate">
-                                                                                            <img src="../assets/image/general/<?= $content['image'] ?>" alt="<?= $content['title'] ?>" width="240" height="160" class="w-full h-full object-cover">
+                                                                                            <img src="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) .'/'. $content['image'] ) }}" lang="" alt="<?= $content['title'] ?>" width="240" height="160" class="w-full h-full object-cover">
                                                                                         </div>
                                                                                         <div class="py-[14px] px-[28px] xs:px-[20px] grid place-items-center min-md:opacity-0 absolute top-[160px] min-md:translate-y-[10px] md:translate-y-[-40px] group-hover/item:min-md:translate-y-[-40px] group-hover/item:min-md:opacity-100 transition-all duration-300 group-hover/item:min-md:delay-150 z-5 before:absolute before:left-0 before:top-0 before:w-full before:h-full before:bg-primary-main before:-skew-x-12 before:rounded-[6px]">
                                                                                             <i class="icon-arrow-right text-[20px] xs:text-[18px] leading-none h-[20px] xs:h-[18px] text-white relative z-5 transition-all duration-450 delay-300"></i>
@@ -259,11 +174,11 @@
                                                             </div>
                                                             <div class="menu-using-area-slider overflow-hidden">
                                                                 <div class="swiper-wrapper md:grid md:grid-cols-4 sm:grid-cols-3 xsm:grid-cols-2 md:gap-[30px] xsm:gap-[20px]">
-                                                                    <?php for ($i = 0; $i < 2; $i++): foreach ($item['megaMenuUsingArea'] as $usingArea): ?>
+                                                                    <?php foreach ($item['megaMenuUsingArea'] as $usingArea): ?>
                                                                         <div class="swiper-slide">
-                                                                            <a href="using-area-detail.php" class="item group/item flex flex-col items-center gap-[22px] relative w-full overflow-hidden whitespace-normal">
+                                                                            <a href="{{ env('HTTP_DOMAIN').'/'. getUrl('using_area_url').'/'.$usingArea['link'] }}" class="item group/item flex flex-col items-center gap-[22px] relative w-full overflow-hidden whitespace-normal">
                                                                                 <div class="image-wrapper h-[160px] rounded-[20px] overflow-hidden isolate">
-                                                                                    <img src="../assets/image/general/<?= $usingArea['image'] ?>" alt="<?= $usingArea['title'] ?>" width="240" height="160" class="w-full h-full object-cover">
+                                                                                    <img src="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) .'/'. $usingArea['image'] ) }}" alt="<?= $usingArea['title'] ?>" width="240" height="160" class="w-full h-full object-cover">
                                                                                 </div>
                                                                                 <div class="py-[14px] px-[28px] xs:px-[20px] grid place-items-center opacity-0 md:opacity-100 absolute top-[160px] translate-y-[10px] group-hover/item:min-md:translate-y-[-40px] md:translate-y-[-40px] group-hover/item:min-md:opacity-100 transition-all duration-300 group-hover/item:min-md:delay-150 z-5 before:absolute before:left-0 before:top-0 before:w-full before:h-full before:bg-primary-main before:-skew-x-12 before:rounded-[6px]">
                                                                                     <i class="icon-arrow-right text-[20px] xs:text-[18px] leading-none h-[20px] xs:h-[18px] text-white relative z-5 transition-all duration-450 delay-300"></i>
@@ -271,7 +186,7 @@
                                                                                 <p class="text-[18px] md:text-[16px] leading-[24px] text-secondary-main transition-all duration-450 group-hover/item:min-md:font-bold text-center w-full"><?= $usingArea['title'] ?></p>
                                                                             </a>
                                                                         </div>
-                                                                    <?php endforeach; endfor; ?>
+                                                                    <?php endforeach; ?>
                                                                 </div>
                                                             </div>
                                                             <div class="next absolute top-1/2 -translate-y-1/2 right-[20px] md:hidden">
@@ -295,7 +210,7 @@
                     <div class="logo-area relative h-full">
                         <div class="absolute w-full h-full transition-all duration-450 delay-50 group-[&.is-fixed]/header:opacity-0 group-[&.mobile-menu-active]/headerBody:opacity-0 group-[&.mega-active]/header:opacity-0 group-[&.sub-page]/header:opacity-0 xs:before:hidden before:absolute before:left-0 before:top-[-1px] before:w-full before:h-full before:bg-[linear-gradient(180deg,_#527582_0%,_#527582_0.01%,_rgba(53,85,111,0.00)_99.62%)] before:-skew-x-12 before:pointer-events-none before:min-md:animate-logoBefore"></div>
                         <div class="logo w-full h-full relative py-[30px] group-[&.is-fixed]/header:py-[10px] lg:py-[15px] px-[80px] xl:px-[50px] xsm:px-0 group-[&.mobile-menu-active]/headerBody:px-0 transition-all duration-300 grid place-items-center">
-                            <a href="index.php" class="block pointer-events-auto z-100">
+                            <a href="<?=env('HTTP_DOMAIN')?>" class="block pointer-events-auto z-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="250" height="90" viewBox="0 0 250 90" fill="none" class="group-[&amp;.is-fixed]/header:[&amp;_.logo-text]:fill-secondary-main group-[&amp;.mobile-menu-active]/headerBody:[&amp;_.logo-text]:fill-secondary-main group-[&amp;.mega-active]/header:[&amp;_.logo-text]:fill-secondary-main group-[&amp;.sub-page]/header:[&amp;_.logo-text]:fill-secondary-main w-[250px] group-[&amp;.is-fixed]/header:min-lg:w-[200px] h-auto xl:w-[200px] xsm:w-[160px] transition-all duration-450 ">
                                     <g clip-path="url(#clip0_405_16658)">
                                         <path d="M10.2914 42.9946L9.82679 45.3671C9.73133 45.863 9.16488 46.2992 8.61434 46.2992H0.626819C0.404059 46.2992 0.219487 46.2301 0.111289 46.1015C-0.0160018 45.954 -0.00963725 45.7719 0.0126387 45.6433L2.07476 35.1425H2.0843L2.22751 34.4113C2.32297 33.9155 2.88942 33.4792 3.43996 33.4792H11.4275C11.6502 33.4792 11.8348 33.5483 11.943 33.677C12.0703 33.8245 12.0639 34.0065 12.0417 34.1352L10.2978 42.9946H10.2914Z" fill="#16AD82" class="logo-other" style="opacity: 1;"></path>

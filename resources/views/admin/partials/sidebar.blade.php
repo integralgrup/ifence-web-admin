@@ -46,7 +46,13 @@
                   <li class="nav-item">
                     <a href="{{ route('admin.menu') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Menü</p>
+                      <p>Menü Yönetimi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.menu.footer', 'footer') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Footer Menü Yönetimi</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -65,6 +71,12 @@
                     <a href="{{ route('admin.project.index') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Projeler</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.using_areas.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Kullanım Alanları</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -148,7 +160,7 @@
                   <li class="nav-item">
                     <a href="{{ route('admin.about.how_we_do') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Nasıl Yaparız?</p>
+                      <p>Hizmetlerimiz</p>
                     </a>
                   </li>
                   <li class="nav-item">

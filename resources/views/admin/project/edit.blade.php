@@ -61,7 +61,7 @@
                             $description[$project->lang] = $project->description;
                             $image[$project->lang] = $project->image;
                             $alt[$project->lang] = $project->alt;
-                            $used_products[$project->lang] = explode(',',$project->used_products) ?? [];
+                            $used_products[$project->lang] = json_decode($project->used_products) ?? [];
                             $country_id[$project->lang] = $project->country_id;
                             $seo_title[$project->lang] = $project->seo_title;
                             $seo_description[$project->lang] = $project->seo_description;

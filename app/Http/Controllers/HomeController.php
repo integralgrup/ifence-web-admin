@@ -27,6 +27,7 @@ use App\Models\Country;
 use App\Models\Continent;
 use App\Models\Project;
 use App\Models\ProjectGallery;
+use App\Models\UsingAreas;
 use Illuminate\Support\Facades\DB;
 
 
@@ -35,7 +36,7 @@ class HomeController extends Controller
     public function index()
     {
         //dd($_SERVER['DOCUMENT_ROOT']);
-        $sliders = Slider::where('lang', app()->getLocale())->get();
+        $slides = Slider::where('lang', app()->getLocale())->get();
         $languages = Language::all();
         $about = About::where('lang', app()->getLocale())->first();
         $about_sliders = DB::table('about_slider')->where('lang', app()->getLocale())->get();
@@ -47,6 +48,8 @@ class HomeController extends Controller
             }])
             ->get();
         $clubs = Club::where('lang', app()->getLocale())->get();
+        $using_areas = UsingAreas::where('lang', app()->getLocale())->get();
+        //dd($continents);
         $countries = Country::where('lang', app()->getLocale())// with continent data
             ->with('continent')
             ->get()
@@ -65,34 +68,33 @@ class HomeController extends Controller
         //dd($blog);
         $continents = Continent::where('lang', app()->getLocale())->with('countries')->get()->toArray();
 
-        return view('home', compact('sliders', 'languages', 'about', 'about_sliders', 'about_certificates', 'products', 'clubs', 'countries', 'continents', 'blog'));
+        return view('home', compact('slides', 'languages', 'about', 'about_sliders', 'about_certificates', 'products', 'clubs', 'countries', 'continents', 'blog', 'using_areas'));
     }
 
     public function route($slug, $slug2 = null)
     {
         $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
-        
+        //dd($menu);
         // If the menu item has a page_type of 'about', fetch the about data
         if($menu->page_type == 'about') {
             $about = About::where('lang', app()->getLocale())->first();
             $about_slider = DB::table('about_slider')->where('lang', app()->getLocale())->get()->toArray();
-            $how_we_do = DB::table('about_how_we_do')->where('lang', app()->getLocale())->get()->toArray();
+            $services = DB::table('about_how_we_do')->where('lang', app()->getLocale())->get()->toArray();
             $what_we_do =  DB::table('about_what_we_do')->where('lang', app()->getLocale())->get()->toArray();
             $certificates = DB::table('about_certificates')->where('lang', app()->getLocale())->get()->toArray();
             $brands = Brand::where('lang', app()->getLocale())->get();
-            //debug($certificates);
+            //debug($what_we_do);
             
             //dd($politics);
-            return view('about', compact('about', 'how_we_do', 'what_we_do', 'certificates', 'about_slider', 'brands'));
+            return view('about', compact('about', 'services', 'what_we_do', 'certificates', 'about_slider', 'brands'));
         }
 
-        if($menu->page_type == 'product_category') {
+        if($menu->page_type == 'product') {
             if($slug2 == null) {
-                
-                $category = ProductCategory::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->first();
-                $products = Product::where(['lang' => app()->getLocale(), 'category_id' => $category->category_id])->with(['images', 'category'])->get();
+                $products = Product::where(['lang' => app()->getLocale()])->with(['images', 'category'])->get();
+                $categories = ProductCategory::where(['lang' => app()->getLocale()])->get();
                 //dd($products);
-                return view('product_category', compact('category', 'products', 'menu'));
+                return view('products', compact('products', 'categories', 'menu'));
 
             } else {
                 $product = Product::where(['seo_url' => $slug2, 'lang' => app()->getLocale()])->with(['category', 'gallery', 'faqs', 'types', 'images', 'features'])->firstOrFail();
@@ -101,14 +103,29 @@ class HomeController extends Controller
             }
         }
 
-        
+        if($menu->page_type == 'using_area') {
+            if($slug2 == null) {
+                $using_areas = UsingAreas::where(['lang' => app()->getLocale()])->with(['gallery'])->get();
+                //dd($products);
+                return view('using_areas', compact('using_areas', 'menu'));
 
-        if($menu->page_type == 'club') {
-            $club = Club::where(['lang' => app()->getLocale(), 'seo_url' => $slug])->with(['sliders1', 'sliders2', 'sliders3', 'features', 'faqs'])->firstOrFail();
-            //dd($club);
-            return view('club', compact('club'));
-
+            } else {
+                $using_area = UsingAreas::where(['seo_url' => $slug2, 'lang' => app()->getLocale()])->with(['gallery'])->firstOrFail();
+                $used_product_ids = array_map('trim', explode(',', $using_area->used_products));
+                //dd($used_product_ids);
+                $products = Product::where(['lang' => app()->getLocale()])
+                    ->whereIn('product_id', $used_product_ids)
+                    ->with(['gallery','images', 'category' => function ($q) {
+                        $q->where('lang', app()->getLocale());
+                    }])
+                    ->orderBy('product_id', 'desc')
+                    ->limit(5)->get();
+                //dd($products);
+                return view('using_area', compact('using_area', 'products'));
+            }
         }
+
+        
 
         if($menu->page_type == 'project') {
 
@@ -149,6 +166,7 @@ class HomeController extends Controller
                 $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get();
                 //dd($blogs);
                 $blog = Blog::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->firstOrFail();
+                //dd($blog);
                 $blogSlider = BlogSlider::where(['lang' => app()->getLocale(), 'blog_id' => $blog->blog_id])->get();
                 //dd($blogSlider);
                 return view('blog-detail', compact('blog', 'blogs', 'blogSlider'));

@@ -59,13 +59,13 @@ class LanguageController extends Controller
                 'path' => 'required|max:255',
                 'about_url' => 'nullable|string|max:255',
                 'product_url' => 'nullable|string|max:255',
-                'club_url' => 'nullable|string|max:255',
+                'using_area_url' => 'nullable|string|max:255',
                 'project_url' => 'nullable|string|max:255',
                 'blog_url' => 'nullable|string|max:255',
                 'contact_url' => 'nullable|string|max:255',
                 'uploads_folder' => 'nullable|string|max:255',
                 'images_folder' => 'nullable|string|max:255',
-                'club_images_folder' => 'nullable|string|max:255',
+                'using_area_images_folder' => 'nullable|string|max:255',
                 'product_images_folder' => 'nullable|string|max:255',
                 'project_images_folder' => 'nullable|string|max:255',
                 'blog_images_folder' => 'nullable|string|max:255',
@@ -104,13 +104,13 @@ class LanguageController extends Controller
                     'path' => $request->path,
                     'about_url' => $request->about_url,
                     'product_url' => $request->product_url,
-                    'club_url' => $request->club_url,
+                    'using_area_url' => $request->using_area_url,
                     'project_url' => $request->project_url,
                     'blog_url' => $request->blog_url,
                     'contact_url' => $request->contact_url,
                     'uploads_folder' => $request->uploads_folder,
                     'images_folder' => $request->images_folder,
-                    'club_images_folder' => $request->club_images_folder,
+                    'using_area_images_folder' => $request->using_area_images_folder,
                     'project_images_folder' => $request->project_images_folder,
                     'product_images_folder' => $request->product_images_folder,
                     'blog_images_folder' => $request->blog_images_folder,
@@ -124,11 +124,11 @@ class LanguageController extends Controller
 
             // Redirect back with success message
             return redirect()->back()
-                         ->with('success', 'Language item created successfully!');
+                         ->with('success', 'Dil öğesi başarıyla kaydedildi!');
             //return redirect()->route('admin.menu')->with('success', 'Menu item created successfully.');
         } catch (\Exception $e) {
             throw $e; die();
-            return redirect()->back()->withErrors(['error' => 'Failed to create language item: ' . $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => 'Hata: ' . $e->getMessage()]);
         }
        
     }

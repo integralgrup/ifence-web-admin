@@ -77,6 +77,14 @@
                                             <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
                                         <div class="mb-3">
+                                            <label for="left_{{ $language->lang_code }}" class="form-label">Sol Konum ({{ $language->lang_code }})</label>
+                                            <input type="text" class="form-control" id="left_{{ $language->lang_code }}" name="left_{{ $language->lang_code }}" {{ $required }}>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="top_{{ $language->lang_code }}" class="form-label">Üst Konum ({{ $language->lang_code }})</label>
+                                            <input type="text" class="form-control" id="top_{{ $language->lang_code }}" name="top_{{ $language->lang_code }}" {{ $required }}>
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="sort_{{ $language->lang_code }}" class="form-label">Sıralama ({{ $language->lang_code }})</label>
                                             <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" value="0" {{ $required }}>
                                         </div>

@@ -76,7 +76,7 @@
                                         </div>
                                         <!-- short_description -->
                                         <div class="mb-3">
-                                            <label for="description_{{ $language->lang_code }}" class="form-label">Kısa Açıklama ({{ $language->lang_code }})</label>
+                                            <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
                                             <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
                                         </div>
                                         <div class="mb-3">

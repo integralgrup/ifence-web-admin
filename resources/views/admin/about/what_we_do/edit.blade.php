@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Hakkımızda(Nasıl Yaparız) Güncelleme')
+@section('title', 'Hakkımızda(Hizmetlerimiz) Güncelleme')
 
 @section('content')
 <!--begin::App Content Header-->
@@ -8,11 +8,11 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Hakkımızda(Nasıl Yaparız) Güncelleme</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Hakkımızda(Hizmetlerimiz) Güncelleme</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
-                  <li class="breadcrumb item active" aria-current="page">Hakkımızda(Nasıl Yaparız) Yönetimi</li>
+                  <li class="breadcrumb item active" aria-current="page">Hakkımızda(Hizmetlerimiz) Yönetimi</li>
                 </ol>
               </div>
             </div>
@@ -57,6 +57,8 @@
                             $description[$content->lang] = $content->description;
                             $image[$content->lang] = $content->image;
                             $alt[$content->lang] = $content->alt;
+                            $left[$content->lang] = $content->left;;
+                            $top[$content->lang] = $content->top;
                             $sort[$content->lang] = $content->sort;
                         }
                     ?>
@@ -88,6 +90,14 @@
                                         <div class="form-group">
                                             <label for="alt_{{ $language->lang_code }}">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="left_{{ $language->lang_code }}">Sol Konum ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="left_{{ $language->lang_code }}" name="left_{{ $language->lang_code }}" value="{{ $left[$language->lang_code] }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="top_{{ $language->lang_code }}">Üst Konum ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="top_{{ $language->lang_code }}" name="top_{{ $language->lang_code }}" value="{{ $top[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="sort_{{ $language->lang_code }}">Sıralama ({{ strtoupper($language->lang_code) }})</label>

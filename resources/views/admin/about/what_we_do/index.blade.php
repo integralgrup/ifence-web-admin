@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Hakkımızda(Nasıl Yaparız) Listesi')
+@section('title', 'Hakkımızda(Hizmetlerimiz) Listesi')
 
 @section('content')
 

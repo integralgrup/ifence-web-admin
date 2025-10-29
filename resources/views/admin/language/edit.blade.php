@@ -81,8 +81,8 @@
                                 <input type="text" class="form-control" id="product_url" name="product_url" value="{{ $language->product_url }}" required>
                             </div>
                             <div class="mb-2">
-                                <label for="club_url" class="form-label">Kulüp URL</label>
-                                <input type="text" class="form-control" id="club_url" name="club_url" value="{{ $language->club_url }}" required>
+                                <label for="using_area_url" class="form-label">Kullanım Alanı URL</label>
+                                <input type="text" class="form-control" id="using_area_url" name="using_area_url" value="{{ $language->using_area_url }}" required>
                             </div>
                             <div class="mb-2">
                                 <label for="project_url" class="form-label">Proje URL</label>
@@ -109,8 +109,8 @@
                                 <input type="text" class="form-control" id="product_images_folder" name="product_images_folder" value="{{ $language->product_images_folder }}" required>
                             </div>
                             <div class="mb-2">
-                                <label for="club_images_folder" class="form-label">Kulüp Görseller Klasörü</label>
-                                <input type="text" class="form-control" id="club_images_folder" name="club_images_folder" value="{{ $language->club_images_folder }}" required>
+                                <label for="using_area_images_folder" class="form-label">Kullanım Alanı Görseller Klasörü</label>
+                                <input type="text" class="form-control" id="using_area_images_folder" name="using_area_images_folder" value="{{ $language->using_area_images_folder }}" required>
                             </div>
                             <div class="mb-2">
                                 <label for="blog_images_folder" class="form-label">Blog Görseller Klasörü</label>

@@ -79,7 +79,7 @@
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="url_{{ $language->lang_code }}">URL ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="url_{{ $language->lang_code }}">Üst Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" value="{{ $url[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
@@ -124,7 +124,7 @@
                             </div>
                             <div class="form-group mt-3">
                                 <button type="submit" class="btn btn-primary">Güncelle</button>
-                                <a href="{{ route('admin.brand.index') }}" class="btn btn-secondary">Geri Dön</a>
+                                <a href="{{ route('admin.brand') }}" class="btn btn-secondary">Geri Dön</a>
                             </div>
                         </form>
                     </div>

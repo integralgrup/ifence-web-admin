@@ -1,5 +1,5 @@
 @extends('admin.layouts.main')
-@section('title', 'Hakkımızda(Nasıl Yaparız) Listesi')
+@section('title', 'Hakkımızda(Hizmetlerimiz) Listesi')
 
 @section('content')
 
@@ -9,11 +9,11 @@
           <div class="container-fluid">
             <!--begin::Row-->
             <div class="row">
-              <div class="col-sm-6"><h3 class="mb-0">Hakkımızda(Nasıl Yaparız) Listesi</h3></div>
+              <div class="col-sm-6"><h3 class="mb-0">Hakkımızda(Hizmetlerimiz) Listesi</h3></div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Anasayfa</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Hakkımızda(Nasıl Yaparız) Yönetimi</li>
+                  <li class="breadcrumb-item active" aria-current="page">Hakkımızda(Hizmetlerimiz) Yönetimi</li>
                 </ol>
               </div>
             </div>
@@ -41,7 +41,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0">Hakkımızda(Nasıl Yaparız) Listesi</h5>
+                            <h5 class="card-title mb-0">Hakkımızda(Hizmetlerimiz) Listesi</h5>
                             <a href="{{ route('admin.about.how_we_do.create') }}" class="btn btn-primary">
                                 <i class="bi bi-plus"></i> Ekle
                             </a>

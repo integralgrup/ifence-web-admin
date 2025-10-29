@@ -244,7 +244,7 @@ class AboutController extends Controller
                 @unlink($tmpImgPath);
             }
             
-            return redirect()->route('admin.about.how_we_do')->with('success', 'Nasıl Yaparız içeriği başarıyla kaydedildi.');
+            return redirect()->route('admin.about.how_we_do')->with('success', 'Hizmetlerimiz içeriği başarıyla kaydedildi.');
         } catch (\Exception $e) {
             
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
@@ -297,6 +297,8 @@ class AboutController extends Controller
                         'title_' . $language->lang_code => 'required|string|max:100',
                         'description_' . $language->lang_code => 'required|string',
                         'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'left_' . $language->lang_code => 'required|string|max:255',
+                        'top_' . $language->lang_code => 'required|string|max:255',
                         'alt_' . $language->lang_code => 'required|string|max:255',
                     ]);
                 }
@@ -319,6 +321,8 @@ class AboutController extends Controller
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName, // save relative path
+                        'left' => $request->input('left_' . $language->lang_code) ?? $request->input('left_en'),
+                        'top' => $request->input('top_' . $language->lang_code) ?? $request->input('top_en'),
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                         'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en'),
                     ]
@@ -390,7 +394,7 @@ class AboutController extends Controller
             }
 
                 if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'image_' . $language->lang_code, $languages[0]);
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
                     $imageName = moveFile($request, $language, 'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
 
                 } else {
@@ -398,7 +402,7 @@ class AboutController extends Controller
                 }
 
                 if ($request->hasFile('pdf_' . $language->lang_code) || $request->hasFile('pdf_en')) {
-                    $tmpPdfPath = createTmpFile($request, 'pdf_' . $language->lang_code, $languages[0]);
+                    $tmpPdfPath = createTmpFile($request, 'pdf_en', $languages[0]);
                     $pdfName = moveFile($request, $language, 'pdf_' . $language->lang_code, 'pdf_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpPdfPath);
 
                 } else {
