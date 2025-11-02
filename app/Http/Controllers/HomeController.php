@@ -142,14 +142,16 @@ class HomeController extends Controller
                 
                 $project = Project::where(['lang' => app()->getLocale(), 'seo_url' => $slug])->with(['gallery', 'country', 'country.continent'])->firstOrFail();
                 //dd($project);
-                // Get products for "Used Products" section, limit 3, product_ids should be in array from $project->used_products string(1,3,5)
-                // where product_id in (1,3,5) and lang = app()->getLocale()
-                // Also get product category data
 
-                $used_product_ids = array_map('trim', explode(',', $project->used_products));
+                $used_product_ids = $project->used_products;
+                // Convert product ids, it is stored like this "[''1, 2, 3'']"
+                $used_product_ids = str_replace(['[', ']', "'", '"'], '', $used_product_ids);
+                // Convert product ids to array it is like "1,3"
+                $used_product_ids = explode(',', $used_product_ids);
                 //dd($used_product_ids);
                 $products = Product::where(['lang' => app()->getLocale()])
                     ->whereIn('product_id', $used_product_ids)
+                    ->with(['gallery','images'])
                     ->with(['category' => function ($q) {
                         $q->where('lang', app()->getLocale());
                     }])
@@ -179,6 +181,7 @@ class HomeController extends Controller
 
         if($menu->page_type == 'contact') {
             $offices = Office::where(['lang' => app()->getLocale()])->get();
+            //dd($offices);
             return view('contact', compact('offices'));
         }
 

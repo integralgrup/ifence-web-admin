@@ -119,7 +119,7 @@
                             </div>
                             <div class="form-group mt-3">
                                 <button type="submit" class="btn btn-primary">Güncelle</button>
-                                <a href="{{ route('admin.blog.index') }}" class="btn btn-secondary">Geri Dön</a>
+                                <a href="{{ route('admin.blog') }}" class="btn btn-secondary">Geri Dön</a>
                             </div>
                         </form>
                     </div>

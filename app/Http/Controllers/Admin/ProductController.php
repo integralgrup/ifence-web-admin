@@ -285,7 +285,7 @@ class ProductController extends Controller
 
     public function galleryCreate($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::where('product_id', $id)->where('lang', app()->getLocale())->firstOrFail();
         return view('admin.product.gallery.create', compact('product'));
     }
 

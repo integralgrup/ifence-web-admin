@@ -81,9 +81,6 @@
                                             <a href="{{ route('admin.product.faq.index', $item->product_id) }}" class="btn btn-info btn-sm">
                                                 SSS
                                             </a>
-                                            <a href="{{ route('admin.product.type.index', $item->product_id) }}" class="btn btn-info btn-sm">
-                                                Çim Tipleri
-                                            </a>
                                             
                                             <form action="{{ route('admin.product.destroy', $item->product_id) }}" method="POST" style="display:inline;">
                                                 @csrf

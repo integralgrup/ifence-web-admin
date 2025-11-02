@@ -161,59 +161,11 @@
         </div>
         <div class="container max-w-[1640px] mb-[160px] 2xl:mb-[120px] xl:mb-[90px] lg:mb-[60px]">
             <div class="news-list w-full grid grid-cols-3 lg:grid-cols-2 xsm:grid-cols-1 gap-[65px] xl:gap-[35px] lg:gap-[24px]">
-                <?php $news = [
-                    [
-                        'title' => 'Our Ifence brand generally produces and assembles fence systems, door systems and',
-                        'date' => '30.08.2023',
-                        'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                        'image' => 'news-page-1.jpg',
-                        'id' => '1'
-                    ],
-
-                    [
-                        'title' => 'Our Ifence brand generally produces and assembles fence systems, door systems and',
-                        'date' => '30.08.2023',
-                        'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                        'image' => 'news-page-2.jpg',
-                        'id' => '1'
-                    ],
-
-                    [
-                        'title' => 'Our Ifence brand generally produces and assembles fence systems, door systems and',
-                        'date' => '30.08.2023',
-                        'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                        'image' => 'news-page-3.jpg',
-                        'id' => '2'
-                    ],
-
-                    [
-                        'title' => 'Our Ifence brand generally produces and assembles fence systems, door systems and',
-                        'date' => '30.08.2023',
-                        'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                        'image' => 'news-page-4.jpg',
-                        'id' => '2'
-                    ],
-
-                    [
-                        'title' => 'Our Ifence brand generally produces and assembles fence systems, door systems and',
-                        'date' => '30.08.2023',
-                        'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                        'image' => 'news-page-5.jpg',
-                        'id' => '3'
-                    ],
-
-                    [
-                        'title' => 'Our Ifence brand generally produces and assembles fence systems, door systems and',
-                        'date' => '30.08.2023',
-                        'description' => 'Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.',
-                        'image' => 'news-page-6.jpg',
-                        'id' => '3'
-                    ],
-                ]; foreach ($news as $key => $item): ?>
-                    <a href="news-detail.php" class="item w-full relative rounded-[10px] h-[550px] group transition-all duration-450 hidden [&.active]:block active" data-content-id="<?= $item['id'] ?>">
+                <?php foreach ($blogs as $key => $item): ?>
+                    <a href="{{env('HTTP_DOMAIN') . '/' . getUrl('blog_url') . '/' . $item->seo_url}}" class="item w-full relative rounded-[10px] h-[550px] group transition-all duration-450 hidden [&.active]:block active" data-content-id="<?= $item['id'] ?>">
                         <div class="reveal-product-box w-full h-full">
                             <div class="image-wrapper relative w-full h-full rounded-[10px] overflow-hidden">
-                                <img src="../assets/image/general/<?= $item['image'] ?>" alt="<?= $item['title'] ?>" width="503" height="547" class="w-full h-full object-cover transition-all duration-450 min-lg:group-hover:scale-110">
+                                <img src="{{asset( getFolder(['uploads_folder', 'blog_images_folder'], $item->lang) . '/' . $item->image )}}" alt="<?= $item['title'] ?>" width="503" height="547" class="w-full h-full object-cover transition-all duration-450 min-lg:group-hover:scale-110">
                                 <div class="overlay absolute pointer-events-auto left-0 bottom-0 w-full h-full bg-[linear-gradient(180deg,_rgba(46,71,92,0.00)_0%,_rgba(46,71,92,0.70)_100%)] z-2 transition-all duration-450 group-hover:opacity-0"></div>
                                 <div class="overlay absolute pointer-events-auto left-0 bottom-0 w-full h-full bg-[linear-gradient(180deg,_rgba(46,71,92,0.00)_0%,_#2E475C_100%)] z-2 transition-all duration-450 opacity-0 group-hover:opacity-100"></div>
                             </div>
@@ -224,12 +176,12 @@
                                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M2.70296 1.07551C2.99136 1.07551 3.22515 0.841716 3.22515 0.553314V0.546875C3.22515 0.244836 3.46988 0 3.77179 0C4.07369 0 4.31842 0.244836 4.31842 0.546875C4.31842 0.838833 4.5551 1.07551 4.84705 1.07551H9.15297C9.44493 1.07551 9.68161 0.838833 9.68161 0.546875C9.68161 0.244836 9.92634 0 10.2282 0C10.5301 0 10.7749 0.244836 10.7749 0.546875V0.553342C10.7749 0.841728 11.0087 1.07551 11.297 1.07551C12.7875 1.07551 14 2.28859 14 3.77964V11.2958C14 12.7869 12.7875 14 11.297 14H2.70293C1.21254 14 0 12.7869 0 11.2958V3.77964C0 2.28859 1.21254 1.07551 2.70296 1.07551ZM11.297 2.16926C11.0087 2.16926 10.7749 2.40305 10.7749 2.69143V3.23567C10.7749 3.53771 10.5301 3.78254 10.2282 3.78254C9.92634 3.78254 9.68161 3.53771 9.68161 3.23567C9.68161 2.64671 9.20416 2.16926 8.6152 2.16926H5.3848C4.79584 2.16926 4.31839 2.64671 4.31839 3.23567C4.31839 3.53771 4.07366 3.78254 3.77176 3.78254C3.46985 3.78254 3.22513 3.53771 3.22513 3.23567V2.69146C3.22513 2.40306 2.99133 2.16926 2.70293 2.16926C1.81536 2.16926 1.09326 2.89168 1.09326 3.77964C1.09326 4.06817 1.32716 4.30207 1.61569 4.30207H12.3843C12.6728 4.30207 12.9067 4.06817 12.9067 3.77964C12.9067 2.89168 12.1846 2.16926 11.297 2.16926ZM2.70296 12.9062H11.297C12.1846 12.9062 12.9067 12.1838 12.9067 11.2958C12.9067 8.03735 10.2585 5.39582 7 5.39582C3.74151 5.39582 1.09326 8.03735 1.09326 11.2958C1.09326 12.1838 1.81536 12.9062 2.70296 12.9062ZM9.14408 7.54688C9.14408 7.84891 9.38881 8.09375 9.69071 8.09375H10.7657C11.0676 8.09375 11.3124 7.84891 11.3124 7.54688C11.3124 7.24484 11.0676 7 10.7657 7H9.69071C9.38883 7 9.14408 7.24484 9.14408 7.54688ZM2.6876 7.54688C2.6876 7.84891 2.93232 8.09375 3.23423 8.09375H4.30926C4.61117 8.09375 4.85589 7.84891 4.85589 7.54688C4.85589 7.24484 4.61117 7 4.30926 7H3.23423C2.93235 7 2.6876 7.24484 2.6876 7.54688ZM5.91895 7.54688C5.91895 7.84891 6.16368 8.09375 6.46559 8.09375H7.54062C7.84252 8.09375 8.08725 7.84891 8.08725 7.54688C8.08725 7.24484 7.84252 7 7.54062 7H6.46559C6.16371 7 5.91895 7.24484 5.91895 7.54688ZM9.14408 10.7734C9.14408 11.0755 9.38881 11.3203 9.69071 11.3203H10.7657C11.0676 11.3203 11.3124 11.0755 11.3124 10.7734C11.3124 10.4714 11.0676 10.2266 10.7657 10.2266H9.69071C9.38883 10.2266 9.14408 10.4714 9.14408 10.7734ZM2.6876 10.7734C2.6876 11.0755 2.93232 11.3203 3.23423 11.3203H4.30926C4.61117 11.3203 4.85589 11.0755 4.85589 10.7734C4.85589 10.4714 4.61117 10.2266 4.30926 10.2266H3.23423C2.93235 10.2266 2.6876 10.4714 2.6876 10.7734ZM5.91895 10.7734C5.91895 11.0755 6.16368 11.3203 6.46559 11.3203H7.54062C7.84252 11.3203 8.08725 11.0755 8.08725 10.7734C8.08725 10.4714 7.84252 10.2266 7.54062 10.2266H6.46559C6.16371 10.2266 5.91895 10.4714 5.91895 10.7734Z" fill="white"/>
                                             </svg>
-                                            <span class="text-[16px] leading-[26px] text-white tracking-[-0.16px]"><?= $item['date'] ?></span>
+                                            <span class="text-[16px] leading-[26px] text-white tracking-[-0.16px]"><?= date("j F Y", strtotime($item['created_at']))  ?></span>
                                         </time>
                                         <p class="text-[24px] xl:text-[22px] md:text-[20px] leading-[36px] text-white font-bold line-clamp-3"><?= $item['title'] ?></p>
                                     </div>
                                     <div class="bottom flex items-end w-full gap-[20px] transition-all duration-450 min-lg:opacity-0 min-lg:translate-y-[100px] will-change-[height,transform] group-hover:min-lg:opacity-100 group-hover:min-lg:translate-y-0">
-                                        <p class="text-[18px] md:text-[16px] leading-[24px] text-white/75 line-clamp-3"><?= $item['description'] ?></p>
+                                        <p class="text-[18px] md:text-[16px] leading-[24px] text-white/75 line-clamp-3"><?= mb_substr($item['description'], 0, 150) . '...' ?></p>
                                         <div class="py-[14px] px-[28px] xs:px-[20px] grid place-items-center transition-all duration-300 relative group-hover/item:min-md:delay-150 z-5 before:absolute before:left-0 before:top-0 before:w-full before:h-full before:bg-primary-main before:-skew-x-12 before:rounded-[6px] before:transition-all before:duration-300 after:-skew-x-12 after:rounded-[6px] after:absolute after:right-0 after:top-0 after:bg-secondary-main after:w-0 after:h-full after:transition-all after:duration-300 after:z-2 hover:after:w-full hover:after:right-auto hover:after:left-0">
                                             <i class="icon-arrow-right text-[20px] xs:text-[18px] leading-none h-[20px] xs:h-[18px] text-white relative z-5 transition-all duration-450 delay-300"></i>
                                         </div>

@@ -542,11 +542,11 @@
             </div>
             <div class="container max-w-[1640px]">
                 <div class="grid grid-cols-2 lg:grid-cols-1 gap-x-[40px] gap-y-[80px] lg:gap-y-[30px] pb-[80px] lg:pb-[30px]">
-                    <?php for ($x = 1; $x <= 4; $x++): ?>
+                    <?php foreach ($projects as $project): ?>
                         <div class="item relative group/item h-[600px] sm:h-[460px] reveal">
                             <div class="image-wrapper w-full h-[500px] sm:h-[320px] relative">
-                                <a href="project-detail.php" class="block w-full h-full">
-                                    <img src="../assets/image/general/project-image.jpg" alt="Project" width="800" height="500" class="w-full h-full object-cover  rounded-[20px]">
+                                <a href="{{env('HTTP_DOMAIN') . '/' . getUrl('project_url') . '/' .  $project->seo_url}}" class="block w-full h-full">
+                                    <img src="{{asset( getFolder(['uploads_folder', 'project_images_folder'], $project->lang) . '/' . $project->image )}}" alt="Project" width="800" height="500" class="w-full h-full object-cover  rounded-[20px]">
                                 </a>
                             </div>
                             <div class="content px-[40px] xsm:px-[10px] translate-y-[-100px]">
@@ -556,7 +556,7 @@
                                             <div class="location h-full relative py-[4px] pr-[30px] border-0 min-sm:!border-r min-sm:border-solid border-r-secondary-main/16">
                                                 <div class="flex items-center gap-[8px] transition-all ease-[cubic-bezier(.45,.05,.55,.95)] duration-300 group-hover/item:min-sm:translate-x-[-100px] group-hover/item:min-sm:opacity-0 delay-500 group-hover/item:min-sm:delay-0">
                                                     <i class="icon-location-pin text-[16px] leading-none h-[16px] text-primary-main"></i>
-                                                    <p class="text-[20px] xl:text-[18px] leading-[30px] text-primary-main font-bold">Russia</p>
+                                                    <p class="text-[20px] xl:text-[18px] leading-[30px] text-primary-main font-bold">{{$project->country->title}}</p>
                                                 </div>
                                                 <a href="project-detail.php" class="block absolute opacity-0 z-3 left-0 top-0 md:hidden min-md:-translate-x-[150px] transition-all ease-manidar duration-500 delay-300 group-hover/item:min-md:translate-x-0 group-hover/item:min-md:opacity-100">
                                                     <div class="py-[14px] px-[28px] xs:px-[20px] grid place-items-center transition-all duration-300 z-5 relative before:absolute before:left-0 before:top-0 before:w-full before:h-full before:bg-primary-main before:-skew-x-12 before:rounded-[6px] --- after:-skew-x-12 after:rounded-[6px] after:absolute after:right-0 after:top-0 after:bg-secondary-main after:w-0 after:h-full after:transition-all after:duration-300 after:z-2 hover:after:w-full hover:after:right-auto hover:after:left-0">
@@ -565,15 +565,15 @@
                                                 </a>
                                             </div>
                                             <h3 class="text-[32px] xl:text-[28px] md:text-[20px] leading-[48px] xl:leading-[40px] md:leading-[30px] font-bold text-secondary-main line-clamp-2 transition-all duration-300">
-                                                <a href="project-detail.php">The standard Lorem Ipsum passage, used since the 1500s</a>
+                                                <a href="project-detail.php">{{$project->title_1}}</a>
                                             </h3>
                                         </div>
-                                        <p class="text-[20px] lg:text-[18px] leading-[30px] text-secondary-main opacity-85 line-clamp-2">Our Ifence brand generally produces and assembles fence systems, door systems and wrought iron systems.</p>
+                                        <p class="text-[20px] lg:text-[18px] leading-[30px] text-secondary-main opacity-85 line-clamp-2">{{$project->short_description}}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </div>
                 <div class="more-area w-full grid place-items-center mt-[30px]">
                     <div class="reveal-product-box">

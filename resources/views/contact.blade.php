@@ -1,4 +1,4 @@
-@extends('layouts.contact')
+@extends('layouts.main')
 
 @section('content')
 
@@ -66,62 +66,8 @@
             </div>
             <div class="w-1/3 md:w-full relative z-2 pointer-events-auto min-md:translate-y-[-110px] md:pt-[30px]">
                 <div class="contact-tabs flex flex-col gap-[20px] md:gap-[10px] md:relative">
-                    <?php $contact = [
-                        [
-                            'title' => 'Head Office',
-                            'phone' => '+90 (212) 678 13 13',
-                            'email' => 'info@ifence.com',
-                            'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                            'link' => 'https://maps.google.com'
-                        ],
-
-                        [
-                            'title' => 'Doha, Qatar',
-                            'phone' => '+90 (212) 678 13 13',
-                            'email' => 'info@ifence.com',
-                            'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                            'link' => 'https://maps.google.com'
-                        ],
-
-                        [
-                            'title' => 'London, UK',
-                            'phone' => '+90 (212) 678 13 13',
-                            'email' => 'info@ifence.com',
-                            'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                            'link' => 'https://maps.google.com'
-                        ],
-
-                        [
-                            'title' => 'Moscow, RUSSIA',
-                            'phone' => '+90 (212) 678 13 13',
-                            'email' => 'info@ifence.com',
-                            'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                            'link' => 'https://maps.google.com'
-                        ],
-
-                        [
-                            'title' => 'New York, USA',
-                            'phone' => '+90 (212) 678 13 13',
-                            'email' => 'info@ifence.com',
-                            'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                            'link' => 'https://maps.google.com'
-                        ],
-                        [
-                            'title' => 'New York, USA',
-                            'phone' => '+90 (212) 678 13 13',
-                            'email' => 'info@ifence.com',
-                            'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                            'link' => 'https://maps.google.com'
-                        ],
-                        [
-                            'title' => 'New York, USA',
-                            'phone' => '+90 (212) 678 13 13',
-                            'email' => 'info@ifence.com',
-                            'address' => 'IOSB Bedrettin Dalan Bulvarı Metro 34 Plaza No:23/100 Basaksehir – Istanbul / TURKEY',
-                            'link' => 'https://maps.google.com'
-                        ],
-                    ];
-                    foreach ($contact as $key => $item): ?>
+                    <?php 
+                    foreach ($offices as $key => $item): ?>
                         <div class="tab reveal cursor-pointer group/tab will-change-[height] [&.active]:overflow-hidden pb-[15px] md:pb-[30px] min-md:border-0 min-md:!border-b min-md:border-solid min-md:border-b-secondary-main/10 last:!border-b-0 last:pb-0 <?= $key == 0 ? 'active' : '' ?> "
                             data-id="<?= $key ?>">
                             <h2
@@ -354,10 +300,6 @@
     </div>
     </div>
 </main>
-
-@endsection
-
-@section('scripts')
 <script>
     // Contact tab
     const contactTabs = document.querySelectorAll(".contact-tabs .tab")
@@ -490,9 +432,14 @@
         })
     })
 </script>
-
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxycU6lO2UWtUA4BZDIfXrSVyYVqQ0wRM&callback=initMap&libraries=marker&v=beta"
     defer=""></script>
+@endsection
+
+@section('scripts')
+
+
+
 
 @endsection

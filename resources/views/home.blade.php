@@ -771,15 +771,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="slide-area w-full">
+                        <div class="slide-area w-full"> 
                             <div class="home-news-slider xl:overflow-hidden reveal [&_*]:will-change-[transform]">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($blog as $item): ?>
+                                    <?php foreach ($blog as $key => $item): ?>
                                         <div class="swiper-slide">
                                             <div class="item w-full rounded-[10px] overflow-hidden bg-secondary-main">
                                                 <div class="flex xsm:flex-col">
                                                     <div class="image-wrapper min-w-[500px] md:min-w-[300px] h-auto xsm:h-[300px]">
-                                                        <img src="<?= asset(getFolder(['uploads_folder', 'blog_images_folder'], $item['lang'])) . '/'. $item['image'] ?>" alt="<?= $item['alt'] ?>" width="503" height="547" class="w-full h-full object-cover">
+                                                        <img src="{{asset( getFolder(['uploads_folder', 'blog_images_folder'], $item['lang']) . '/' . $item['image'] )}}" alt="<?= $item['image'] ?>" width="503" height="547" class="w-full h-full object-cover">
                                                     </div>
                                                     <div class="content p-[80px] 2xl:p-[65px] xl:p-[45px] lg:p-[25px] flex flex-col justify-center gap-[20px]">
                                                         <time class="flex items-center gap-[10px]">
@@ -789,9 +789,9 @@
                                                             <span class="text-[16px] leading-[26px] text-white tracking-[-0.16px]"><?= date("j F Y", strtotime($item['created_at'])) ?></span>
                                                         </time>
                                                         <h4 class="text-[32px] xl:text-[26px] md:text-[20px] leading-[40px] xl:leading-[35px] text-white font-bold mb-[10px] sm:mb-0"><?= $item['title'] ?></h4>
-                                                        <p class="text-[18px] lg:text-[16px] leading-[24px] text-white/75 mb-[60px] xl:mb-[35px] sm:mb-0 sm:hidden"><?= $item['description'] ?></p>
+                                                        <p class="text-[18px] lg:text-[16px] leading-[24px] text-white/75 mb-[60px] xl:mb-[35px] sm:mb-0">{{ mb_substr(strip_tags($item['description']), 0, 200) . '...' }}</p>
                                                         <?php
-                                                            $link = "news-detail.php";
+                                                            $link = env('HTTP_DOMAIN') . '/' . getUrl('blog_url') . '/' . $item['seo_url'] ;
                                                             $title = "Read More";
                                                             $background = "bg-white/10";
                                                             $backgroundHover = "before:bg-primary-main";

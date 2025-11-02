@@ -140,7 +140,7 @@ class ProjectController extends Controller
     public function galleryIndex($id)
     {
         $project = Project::where('project_id', $id)->where('lang', app()->getLocale())->firstOrFail();
-        $gallery = ProjectGallery::where('project_id', $id)->get();
+        $gallery = ProjectGallery::where('project_id', $id)->where('lang', app()->getLocale())->get();
         return view('admin.project.gallery.index', compact('project', 'gallery'));
     }
 
