@@ -21,136 +21,28 @@
         </div>
         <div class="container max-w-[1640px] sm:hidden">
             <div class="flex justify-center">
-                <?php $menus = [
-                    [
-                        'title' => 'Corporate',
-                        'items' => [
-                            [
-                                'title' => 'Who are we?',
-                                'link' => 'about-us.php',
-                            ],
-                            [
-                                'title' => 'What Do We Do?',
-                                'link' => 'about-us.php',
-                            ],
-                            [
-                                'title' => 'How do we do?',
-                                'link' => 'about-us.php',
-                            ],
-                            [
-                                'title' => 'Our Vision',
-                                'link' => 'about-us.php',
-                            ],
-                        ]
-                    ],
-
-                    [
-                        'title' => 'Using Areas',
-                        'items' => [
-                            [
-                                'title' => 'Sports fields',
-                                'link' => 'using-area-detail.php',
-                            ],
-                            [
-                                'title' => 'Parks and Gardens',
-                                'link' => 'using-area-detail.php',
-                            ],
-                            [
-                                'title' => 'Machinery Security Fence Systems',
-                                'link' => 'using-area-detail.php',
-                            ],
-                            [
-                                'title' => 'Secure Areas',
-                                'link' => 'using-area-detail.php',
-                            ],
-                            [
-                                'title' => 'Energy Facilities',
-                                'link' => 'using-area-detail.php',
-                            ],
-                            [
-                                'title' => 'Military Areas',
-                                'link' => 'using-area-detail.php',
-                            ],
-                            [
-                                'title' => 'Road Sides',
-                                'link' => 'using-area-detail.php',
-                            ],
-                        ]
-                    ],
-
-                    [
-                        'title' => 'Products',
-                        'items' => [
-                            [
-                                'title' => 'Netrags',
-                                'link' => 'products.php',
-                            ],
-                            [
-                                'title' => 'Geobera',
-                                'link' => 'products.php',
-                            ],
-                            [
-                                'title' => 'Ifence',
-                                'link' => 'products.php',
-                            ],
-                            [
-                                'title' => 'Anymats',
-                                'link' => 'products.php',
-                            ],
-                            [
-                                'title' => 'Avind',
-                                'link' => 'products.php',
-                            ],
-                            [
-                                'title' => 'Integralspor',
-                                'link' => 'products.php',
-                            ],
-                        ]
-                    ],
-
-                    [
-                        'title' => 'Other Links',
-                        'items' => [
-                            [
-                                'title' => 'Link Name 1',
-                                'link' => 'https://pentayazilim.com',
-                            ],
-                            [
-                                'title' => 'Link Name 2',
-                                'link' => 'https://pentayazilim.com',
-                            ],
-                            [
-                                'title' => 'Link Name 3',
-                                'link' => 'https://pentayazilim.com',
-                            ],
-                            [
-                                'title' => 'Link Name 4',
-                                'link' => 'https://pentayazilim.com',
-                            ],
-                            [
-                                'title' => 'Link Name 5',
-                                'link' => 'https://pentayazilim.com',
-                            ],
-                            [
-                                'title' => 'Link Name 6',
-                                'link' => 'https://pentayazilim.com',
-                            ],
-                        ]
-                    ],
-                    [
-                        'title' => 'GDPR',
-                        'items' => [
-                            [
-                                'title' => 'Privacy Policy',
-                                'link' => 'template.php',
-                            ],
-                            [
-                                'title' => 'Cookie Policy',
-                                'link' => 'template.php',
-                            ],
-                        ]
-                    ],
-                ]; foreach ($menus as $item): ?>
+                <?php 
+                    $footer_menu = App\Models\Menu::where(['lang' => app()->getLocale(), 'menu_type' => 'footer'])->with('children')
+                    ->where('parent_menu_id', 0) // only root menus
+                    ->get();
+                ?>
+                <?php 
+                    $menus = [];
+                    foreach($footer_menu as $menu): 
+                        $menu_items = [];
+                        foreach($menu->children as $child) {
+                            $menu_items[] = [
+                                'title' => $child->title,
+                                'link' => $child->seo_url,
+                            ];
+                        }
+                        $menus[] = [
+                            'title' => $menu->title,
+                            'items' => $menu_items,
+                        ];
+                    endforeach;
+                ?>
+                <?php foreach ($menus as $item): ?>
                     <div class="menu w-max md:w-full flex flex-col gap-[24px] px-[60px] xl:px-[40px] first:pl-0 last:pr-0 relative after:absolute after:top-0 after:right-0 after:w-[1px] after:h-[370px] after:bg-[linear-gradient(100deg,_rgba(255,255,255,0.00)_0%,_#FFF_52.33%,_rgba(255,255,255,0.00)_101.12%)] after:opacity-30 last:after:hidden">
                         <p class="text-[32px] xl:text-[26px] md:text-[20px] leading-[40px] xl:leading-[35px] text-white font-bold"><?= $item['title'] ?></p>
                         <ul class="flex flex-col gap-[5px]">
@@ -172,19 +64,19 @@
         <div class="container max-w-[1640px]">
             <div class="w-full flex lg:flex-wrap sm:flex-col sm:gap-[30px] [&_>_div]:min-lg:w-full">
                 <div class="flex flex-col gap-[9px] pr-[85px] 2xl:pr-[40px] lg:w-1/3 sm:w-full sm:after:hidden sm:p-0 relative after:absolute after:top-0 after:right-0 after:w-[1px] after:h-[115px] after:bg-[linear-gradient(260deg,_rgba(255,255,255,0.00)_0%,_#FFF_52.33%,_rgba(255,255,255,0.00)_101.12%)] after:opacity-30">
-                    <p class="text-[18px] md:text-[16px] leading-normal tracking-[-0.18px] text-white font-semibold">Address</p>
-                    <a href="https://maps.google.com" target="_blank" class="text-[18px] md:text-[16px] leading-[24px] tracking-[-0.18px] text-white max-w-[342px] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-450 hover:after:min-md:w-full after:md:hidden">{{$footerInfo->address}}</a>
+                    <p class="text-[18px] md:text-[16px] leading-normal tracking-[-0.18px] text-white font-semibold">{{getStaticText(6)}}</p>
+                    <a href="{{$footerInfo->map_url }}" target="_blank" class="text-[18px] md:text-[16px] leading-[24px] tracking-[-0.18px] text-white max-w-[342px] relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-450 hover:after:min-md:w-full after:md:hidden">{{$footerInfo->address}}</a>
                 </div>
                 <div class="flex flex-col gap-[17px] sm:gap-[9px] px-[85px] 2xl:px-[40px] lg:w-1/3 sm:w-full sm:after:hidden sm:p-0 relative after:absolute after:top-0 after:right-0 after:w-[1px] after:h-[115px] after:bg-[linear-gradient(260deg,_rgba(255,255,255,0.00)_0%,_#FFF_52.33%,_rgba(255,255,255,0.00)_101.12%)] after:opacity-30">
-                    <p class="text-[16px] leading-normal tracking-[-0.16px] text-white font-semibold">Phone</p>
-                    <a href="tel:+902126781313" class="text-[30px] xl:text-[20px] md:text-[16px] leading-normal tracking-[-1.2px] text-white w-max relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-450 hover:after:min-md:w-full after:md:hidden">{{$footerInfo->phone}}</a>
+                    <p class="text-[16px] leading-normal tracking-[-0.16px] text-white font-semibold">Ph{{getStaticText(7)}}one</p>
+                    <a href="tel:{{$footerInfo->phone}}" class="text-[30px] xl:text-[20px] md:text-[16px] leading-normal tracking-[-1.2px] text-white w-max relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-450 hover:after:min-md:w-full after:md:hidden">{{$footerInfo->phone}}</a>
                 </div>
                 <div class="flex flex-col gap-[17px] sm:gap-[9px] pl-[85px] 2xl:pl-[40px] pr-[70px] 2xl:pr-[35px] lg:w-1/3 sm:w-full lg:after:hidden sm:p-0 relative after:absolute after:top-0 after:right-0 after:w-[1px] after:h-[115px] after:bg-[linear-gradient(260deg,_rgba(255,255,255,0.00)_0%,_#FFF_52.33%,_rgba(255,255,255,0.00)_101.12%)] after:opacity-30">
-                    <p class="text-[16px] leading-normal tracking-[-0.16px] text-white font-semibold">E-Mail</p>
+                    <p class="text-[16px] leading-normal tracking-[-0.16px] text-white font-semibold">{{getStaticText(8)}}</p>
                     <a href="mailto:{{$footerInfo->email}}" class="text-[30px] xl:text-[20px] md:text-[16px] leading-normal tracking-[-0.3px] text-white w-max relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-450 hover:after:min-md:w-full after:md:hidden">{{$footerInfo->email}}</a>
                 </div>
                 <div class="flex flex-col gap-[15px] sm:gap-[9px] pl-[70px] 2xl:pl-[35px] lg:w-full lg:pl-0 lg:pt-[20px] sm:pt-0">
-                    <p class="text-[16px] leading-normal tracking-[-0.16px] text-white font-semibold">Social Media</p>
+                    <p class="text-[16px] leading-normal tracking-[-0.16px] text-white font-semibold">{{getStaticText(9)}}</p>
                     <ul class="flex items-center flex-wrap gap-[20px]">
                             <li>
                                 <a href="<?= $footerInfo['facebook_url'] ?>" target="_blank" class="block group transition-all duration-450 hover:scale-110">
