@@ -323,17 +323,14 @@
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="{{ asset('admin-template') }}/js/adminlte.js"></script>
-    <script src="{{ asset('admin-template') }}/summernote/summernote-bs5.min.js"></script>
-    <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+    <script src="https://www.integralspor.com/web-manager/ckeditor/ckeditor.js"></script>
+
 
     <script>
-      $(document).ready(function() {
-          $('.summernote').summernote({
-              height: 300,   // set editor height
-              minHeight: null, // set minimum height of editor
-              maxHeight: null, // set maximum height of editor
-              focus: true     // set focus to editable area after initializing summernote
-          });
+      document.addEventListener("DOMContentLoaded", function(){
+        document.querySelectorAll('.editor').forEach(function(el){
+          CKEDITOR.replace(el);
+        });
       });
     </script>
 
