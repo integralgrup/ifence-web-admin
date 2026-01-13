@@ -8,6 +8,20 @@
 @section('content')
    <!--begin::App Content Header-->
         <div class="app-content-header">
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+          @if (session('success'))
+              <div class="alert alert-success">
+                  {{ session('success') }}
+              </div>
+          @endif
           <!--begin::Container-->
           <div class="container-fluid">
             <!--begin::Row-->
@@ -70,7 +84,7 @@
                             <form action="{{ route('admin.menu.destroy', $menu->menu_id) }}" method="POST" style="display:inline;">
                               @csrf
                               @method('DELETE')
-                              <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu içeriği silmek istediğinize emin misiniz?')">Sil</button>
                             </form>
                           </td>
                         </tr>

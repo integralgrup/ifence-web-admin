@@ -185,7 +185,7 @@ class MenuController extends Controller
             } else {
                 $to = env('HTTP_DOMAIN') . '/admin/menu';
             }
-            return redirect()->to($to)->with('success', 'Menü basarıyla silindi.');
+            return redirect()->back()->with('success', 'Menü basarıyla silindi.');
 
         } catch (\Exception $e) {
             return redirect()->route('admin.menu')->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
