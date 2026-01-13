@@ -41,7 +41,7 @@
         <div class="container max-w-[1640px] flex-grow">
             <div class="flex items-center gap-[60px] lg:gap-[30px] md:gap-0 h-full">
                 <div class="left w-full md:w-max flex items-center justify-between gap-[140px] 2xl:gap-[70px] xl:gap-[50px] lg:gap-[30px] h-full">
-                    <?php $menuItems = \App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0])->with('children')->orderBy('sort')->get(); ?>
+                    <?php $menuItems = \App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->with('children')->orderBy('sort')->get(); ?>
 
                     <?php $menu = []; ?>
 
