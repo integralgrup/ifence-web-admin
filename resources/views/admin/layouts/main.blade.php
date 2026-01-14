@@ -334,6 +334,65 @@
       });
     </script>
 
+    <script>
+
+      function countChars() {
+        const languages = ['en', 'tr', 'es', 'fr', 'ru', 'ae'];
+        const fields = [];
+        languages.forEach(function (lang) {
+           fields.push(
+              { selector: "#seo_title_" + lang, limit: 100 },
+              { selector: "#seo_description_" + lang, limit: 200 }
+           )
+            
+        })
+        
+
+        fields.forEach(field => {
+          const input = document.querySelector(field.selector);
+          if (!input) return;
+
+          // Create and style <small> counter
+          const counter = document.createElement("small");
+          counter.style.display = "block";
+          counter.style.fontSize = "0.85em";
+          counter.style.color = "red";
+          counter.style.fontWeight = "bold";
+
+          // Function to update remaining characters
+          const updateCounter = () => {
+            const remaining = field.limit - input.value.length;
+            // total character limit
+            const total = field.limit;
+            const typed = input.value.length;
+            counter.textContent = `${typed} karakter yazıldı / Maksimum ${total} karakter.`;
+            counter.style.color = "red";
+            counter.style.fontWeight = "bold";
+          };
+
+          // Prevent typing beyond the limit
+          input.addEventListener("input", () => {
+            if (input.value.length > field.limit) {
+              input.value = input.value.slice(0, field.limit);
+            }
+            updateCounter();
+          });
+
+          // Insert counter and initialize
+          input.insertAdjacentElement("afterend", counter);
+          updateCounter(); // ✅ count existing text on page load
+        });
+      }
+
+
+      document.addEventListener("DOMContentLoaded", function() {
+        countChars();
+      });
+      
+
+    
+  </script>
+
 
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
